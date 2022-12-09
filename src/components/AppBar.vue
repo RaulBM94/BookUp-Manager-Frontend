@@ -70,20 +70,7 @@
 </template>
 
 <script>
-export default {
-    name: 'AppBar',
-    data() {
-        return {
-            links: [
-                'home',
-                'mail',
-                'login',
-                'about'
-            ]
-        }
-    }
 
-}
 </script>
 
 <style lang="scss" scoped>
