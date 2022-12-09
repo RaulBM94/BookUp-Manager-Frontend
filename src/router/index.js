@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import MailView from '../views/MailView.vue'
 import LoginView from '../views/LoginView.vue'
 import AboutView from '../views/AboutView.vue'
+import PersonalView from '../views/PersonalView.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/personal',
+    name: 'personal',
+    component: PersonalView
   },
   {
     path: '/mail',
