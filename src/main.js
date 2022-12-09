@@ -1,15 +1,15 @@
 import Vue from 'vue'
-import { createPinia, PiniaVuePlugin } from 'pinia'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import vuetify from './plugins/vuetify'
 
-Vue.use(PiniaVuePlugin)
+//Vue.use(PiniaVuePlugin)
 const pinia = createPinia()
-const app = Vue.createApp(App)
+// const app = Vue.createApp(App)
 
-app.use(pinia)
+Vue.use(pinia)
 Vue.config.productionTip = false
 
 new Vue({

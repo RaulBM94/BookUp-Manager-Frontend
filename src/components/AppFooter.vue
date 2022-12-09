@@ -1,10 +1,10 @@
 <template>
-      <v-footer>
+      <v-footer app padless>
         <v-card
           flat
           tile
           width="100%"
-          class="deep-purple accent-4 text-center"
+          class="deep-purple  text-center"
         >
           <v-card-text>
             <v-btn
