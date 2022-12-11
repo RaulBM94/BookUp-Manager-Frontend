@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MailView from '../views/MailView.vue'
-import LoginView from '../views/LoginView.vue'
+import AuthView from '../views/AuthView.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
 
@@ -23,7 +23,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: LoginView
+    component: AuthView
   },
   {
     path: '/personal',
