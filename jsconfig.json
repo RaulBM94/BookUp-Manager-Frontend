@@ -1,6 +1,12 @@
 {
+  "vueCompilerOptions": {
+    "target":2.7,
+    "extensions": [
+      ".vue"
+    ]
+  },
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es5",
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",

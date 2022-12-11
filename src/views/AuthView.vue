@@ -1,26 +1,30 @@
 <template>
    <div>
 <LogIn v-if="isLogged" @toggleForm="toggleForm"/>
-<SignUp v-else @toggleForm="toggleForm"/>
+<RegistrationForm v-else @toggleForm="toggleForm"/>
    </div>
 </template>
 
 <script>
 import LogIn from '@/components/LogIn.vue';
-import SignUp from '@/components/SignUp.vue'
+import RegistrationForm from '@/components/RegistrationForm.vue';
 export default {
   data(){
     return{
-    isLogged:true
+    isLogged:true,
+    next:true
     }
   },
     components:{
       LogIn,
-      SignUp
+      RegistrationForm,
     },
     methods:{
       toggleForm(){
         this.isLogged = !this.isLogged
+      },
+      nextComponent(){
+        this.next= !this.next
       }
     }
 }

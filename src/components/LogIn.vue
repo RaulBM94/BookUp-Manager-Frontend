@@ -1,25 +1,25 @@
 <template>
     <v-card class="mx-auto my-12" max-width="360">
-        <v-card-title>Iniciar Sesión</v-card-title>
+        <v-card-title justify="center">Iniciar Sesión</v-card-title>
         <v-card-text>
             <v-row allign="center" class="mx-0 mb-3 colour">
                 <v-text-field label="Email" :rules="emailRules" hide-details="auto" filled></v-text-field>
             </v-row>
-            <v-row allign="center" class="mx-0">
+            <v-row allign="center" class="mx-0 mb-3 colour">
                 <v-text-field label="Contraseña" :type="visible ? 'text' : 'password'" hide-details="auto" append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="visible = !visible" filled></v-text-field>
             </v-row>
-        </v-card-text>
-        <v-card-actions>
-            <v-row allign="center" class="mx-0 mb-3 mt-3" >
+            <v-row justify="center" class="mx-0" >
                 <v-btn class="mx-2" dark large color="deep-purple" @click="reserve" elevation="2">
                 Ingresar
             </v-btn>
             </v-row>
-            <v-row allign="center" class="mx-0  mb-3 mt-3">
-                <a @click="toggleForm">No tengo cuenta</a>
-            </v-row>
-        </v-card-actions>
+        </v-card-text>
+        <v-card-actions>
+                        <v-row justify="center" class="mx-0 mt-3 mb-3">
+                            <a @click="toggleForm">No tengo cuenta</a>
+                        </v-row>
+                    </v-card-actions>
     </v-card>
 </template>
 
