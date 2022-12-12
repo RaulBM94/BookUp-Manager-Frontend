@@ -5,6 +5,7 @@ import MailView from '../views/MailView.vue'
 import AuthView from '../views/AuthView.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
+import ReservationView from '../views/ReservationView.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/mail',
     name: 'mail',
     component: MailView
+  },
+  {
+    path:'/reservation',
+    name:'reservation',
+    component:ReservationView
   }
 ]
 
