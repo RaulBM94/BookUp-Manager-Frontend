@@ -7,6 +7,8 @@ import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
 import ReservationView from '../views/ReservationView.vue'
 import AcceptReservation from '../views/AcceptReservation.vue'
+import ReservationPage from '@/views/ReservationPage.vue'
+import ReservationSearch from '@/views/ReservationSearch.vue'
 
 Vue.use(VueRouter)
 
@@ -33,19 +35,30 @@ const routes = [
     component: PersonalView
   },
   {
+    path: '/reservation',
+    name: 'reservation-home',
+    component: ReservationPage
+  },
+
+  {
     path: '/mail',
     name: 'mail',
     component: MailView
   },
   {
-    path:'/reservation',
+    path:'/reservation/create',
     name:'reservation',
     component:ReservationView
   },
   {
     path:'/acceptreservation',
     name:'accept',
-    component:AcceptReservation
+    component:AcceptReservation,
+  },
+  {
+    path:'/reservation/search',
+    name:'reservation-search',
+    component:ReservationSearch
   }
 ]
 
