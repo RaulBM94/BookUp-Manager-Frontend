@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useAuthStore } from '../stores/store'
 
 const API = axios.create({
   baseURL: 'https://api-bookup.onrender.com/api'
@@ -24,44 +23,22 @@ async function login(newUser) {
 }
 
 //USERS
-async function getUserById(id){
-  const store = useAuthStore()
-  const res = await API.get(`/${id}`, {
-    headers:{
-      Authorization:`Bearer ${store.userToken}`
+async function getUserById(client){
+  const res = await API.get("/", {
+    headers: {
+      token: localStorage.getItem('token')
+    },
+    params: {
+      client
     }
   })
   return res
 }
-
-async function createUser(){
-  const store = useAuthStore()
-  const res = await API.post('/', {
-    user: store.userId,
-    ...user 
-  },{ 
-    headers:{
-      Authorization:`Bearer ${store.userToken}`
-    }
-  })
-  return res
-}
-
-async function deleteUserById(id){
-    const store = useAuthStore()
-    const res = await API.delete(`/${id}`, {
-      headers:{
-        Authorization:`Bearer ${store.userToken}`
-      }
-    })
-    return res
-  }
 
 export default {
     signup,
     login,
     getUserById,
-    createUser,
-    deleteUserById
+
 
 }

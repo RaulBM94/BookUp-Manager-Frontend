@@ -12,7 +12,6 @@ export default {
   data(){
     return{
     isLogged:true,
-    next:true
     }
   },
     components:{
@@ -23,9 +22,6 @@ export default {
       toggleForm(){
         this.isLogged = !this.isLogged
       },
-      nextComponent(){
-        this.next= !this.next
-      }
     }
 }
 </script>

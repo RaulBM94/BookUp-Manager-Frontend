@@ -6,18 +6,21 @@
                     <v-card-title>Paso 1: Regístrate como usuario</v-card-title>
                     <v-card-text>
                         <v-row allign="center" class="colour mx-0 mb-3">
-                            <v-text-field label="Nombre" hide-details="auto" filled></v-text-field>
+                            <v-text-field label="Nombre" hide-details="auto" filled
+                                v-model="newUser.name"></v-text-field>
                         </v-row>
                         <v-row allign="center" class="colour mx-0 mb-3">
-                            <v-text-field label="Teléfono" hide-details="auto" filled></v-text-field>
+                            <v-text-field label="Apellido" hide-details="auto" filled
+                                v-model="newUser.surname"></v-text-field>
                         </v-row>
                         <v-row allign="center" class="mx-0 mb-3 colour">
-                            <v-text-field label="Email" :rules="emailRules" hide-details="auto" filled></v-text-field>
+                            <v-text-field label="Email" :rules="emailRules" hide-details="auto" filled
+                                v-model="newUser.email"></v-text-field>
                         </v-row>
                         <v-row allign="center" class="mx-0 mb-3 colour">
                             <v-text-field label="Contraseña" :type="visible ? 'text' : 'password'" hide-details="auto"
                                 append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" @click:append="visible = !visible"
-                                filled></v-text-field>
+                                filled v-model="newUser.password"></v-text-field>
                         </v-row>
                         <v-row allign="center" class="mx-0 colour mb-3">
                             <v-text-field label="Confirmar Contraseña" :type="visible ? 'text' : 'password'"
@@ -28,21 +31,20 @@
                             <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
                                 ANTERIOR
                             </v-btn>
-                            <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
+                            <v-btn dark large color="deep-purple" @click.prevent="done" elevation="2">
                                 FINALIZAR
                             </v-btn>
                         </v-row>
-                        <v-row justify="center" class="mx-0 mt-3">
-                            <v-btn v-if="step != totalSteps" dark large color="deep-purple" @click.prevent="nextStep"
-                                elevation="2">
+                        <v-row justify="center" class="mx-0 mt-3" v-if="step != totalSteps">
+                            <a justify="center" class="mx-0  mb-3 mt-3" @click="toggleForm">Ya tengo cuenta</a>
+                            <v-spacer></v-spacer>
+                            <v-btn dark large color="deep-purple" @click.prevent="nextStep" elevation="2">
                                 SIGUIENTE
                             </v-btn>
                         </v-row>
                     </v-card-text>
                     <v-card-actions>
-                        <v-row justify="center" class="mx-0  mb-3 mt-3">
-                            <a @click="toggleForm">Ya tengo cuenta</a>
-                        </v-row>
+
                     </v-card-actions>
                 </v-card>
             </section>
@@ -51,29 +53,32 @@
                     <v-card-title>Paso 2: Registra tu establecimiento</v-card-title>
                     <v-card-text>
                         <v-row allign="center" class="colour mx-0 mb-3">
-                            <v-text-field label="Nombre del establecimiento" hide-details="auto" filled></v-text-field>
+                            <v-text-field label="Nombre del establecimiento" hide-details="auto" filled
+                                v-model="restaurant.name"></v-text-field>
                         </v-row>
                         <v-spacer></v-spacer>
                         <v-spacer></v-spacer>
                         <v-row allign="center" class="colour mx-0 mt-3 mb-3">
-                            <v-text-field label="Dirección del establecimiento" hide-details="auto"
-                                filled></v-text-field>
+                            <v-text-field label="Dirección del establecimiento" hide-details="auto" filled
+                                v-model="restaurant.direction"></v-text-field>
                         </v-row>
 
-                        <v-row allign="center" class="mx-0 colour mb-3" justify="center">
-                            <v-col cols="3" class="colour" filled md="4">
-                                <v-text-field label="Apertura" hide-details="auto" f></v-text-field>
-                            </v-col>
-                            <v-col cols="3" class="colour " md="4" filled>
-                                <v-text-field label="Cierre" hide-details="auto"></v-text-field>
-                            </v-col>
+                        <v-row allign="center" class="mx-0 mb-3" justify="center">
+                            <v-container fluid>
+                                <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"
+                                    value="true"></v-checkbox>
+                                <v-checkbox v-model="restaurant.has_lunch" label="Incluye horario de almuerzo"
+                                    value="true"></v-checkbox>
+                                <v-checkbox v-model="restaurant.has_dinner" label="Incluye horario de cena"
+                                    value="true"></v-checkbox>
+                            </v-container>
                         </v-row>
                         <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
                             <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
                                 ANTERIOR
                             </v-btn>
                             <v-spacer></v-spacer>
-                            <v-btn dark large color="deep-purple" @click.prevent="reserve" elevation="2">
+                            <v-btn dark large color="deep-purple" @click.prevent="done" elevation="2">
                                 FINALIZAR
                             </v-btn>
                         </v-row>
@@ -95,19 +100,55 @@
 </template>
 
 <script>
+// import API from '../services/api'
+import { useAuthStore, useRestaurantStore } from '../stores/stores'
 export default {
     data() {
         return {
             step: 1,
             totalSteps: 2,
-            form: {
-                name: null,
-                email: null,
-                phone: null,
-                message: null
-            }
+            restaurant: {
+                name: "",
+                direction: "",
+                has_breakfast: "",
+                has_dinner: "",
+                has_lunch: "",
+            },
+            newUser: {
+                name: "",
+                surname: "",
+                email: "",
+                password: ""
+            },
+            password2: "",
+            store1: useAuthStore(),
+            store2: useRestaurantStore()
 
         }
+    },
+    computed: {
+        emailValid: function () {
+            const regExp = /^(\w+)@(\w+)\.(\w\w+)$/;
+            return regExp.test(String(this.newUser.email).toLowerCase());
+        },
+        emailValidOrEmpty: function () {
+            return this.emailValid || this.newUser.email.length === 0;
+        },
+        passwordValid: function () {
+            return this.newUser.password.length >= 5;
+        },
+        passwordValidOrEmpty: function () {
+            return this.passwordValid || this.newUser.password.length === 0;
+        },
+        passwordsEqual: function () {
+            return this.newUser.password === this.password2;
+        },
+        passwordsEqualOrEmpty: function () {
+            return this.passwordsEqual || this.password2.length === 0;
+        },
+        passwordsEqualNotEmpty: function () {
+            return this.passwordsEqual && this.password2.length !== 0;
+        },
     },
     methods: {
         prevStep: function () {
@@ -119,13 +160,21 @@ export default {
         toggleForm() {
             this.$emit("toggleForm")
         },
-        reserve() {
+        async done() {
+            // if (
+            //     this.emailValid &&
+            //     this.passwordValid
+            // ) {
+            //     const response = await API.signup(this.newUser)
+            //     if (response.error) {
+            //         alert('Error creating account')
+            //     } else {
+            // this.store.login(response.token, response.email)
             this.$router.push({ name: 'personal' })
         }
-    },
-    mounted() {
-
     }
+    // },
+    // }
 }
 </script>
 
