@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'https://api-bookup.onrender.com/api'
+  baseURL: 'http://localhost:3000/api'
 })
 
 async function signup(newUser) {
@@ -22,8 +22,24 @@ async function login(newUser) {
   }
 }
 
+async function createRestaurant(restaurant) {
+  try {
+    const { data } = await API.post('/restaurant', restaurant, {
+      headers: {
+        token: localStorage.getItem('token')
+      },
+    }
+
+    )
+    return data
+  }
+  catch (err) {
+    return err
+  }
+}
+
 //USERS
-async function getUserById(client){
+async function getUserById(client) {
   const res = await API.get("/", {
     headers: {
       token: localStorage.getItem('token')
@@ -36,9 +52,10 @@ async function getUserById(client){
 }
 
 export default {
-    signup,
-    login,
-    getUserById,
+  signup,
+  login,
+  getUserById,
+  createRestaurant
 
 
 }

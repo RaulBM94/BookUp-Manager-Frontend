@@ -6,21 +6,8 @@
                 <v-text-field label="Fecha" hide-details="auto" filled>
                     v-model="user.date"></v-text-field>
             </v-row>
-            <v-row>
-                <v-container fluid>
-                    <v-row allign="center">
-                        <v-col cols="6">
-                            <v-subheader class="mx-0 mb-3 colour">
-                                Turno 
-                            </v-subheader>
-                        </v-col>
-                        <v-col cols="6">
-                            <v-select v-model="select" class="mx-0 mb-3 colour" :items="items"
-                                item-text="state" item-value="abbr" label="Select" persistent-hint return-object
-                                single-line></v-select>
-                        </v-col>
-                    </v-row>
-                </v-container>
+            <v-row allign="center" class="mx-0 mb-3 colour">
+                        <v-select :items="items" hide-details="auto" filled label="Turno"></v-select>
             </v-row>
 
             <v-row allign="center" class="mx-0 mb-3 colour">
@@ -80,12 +67,7 @@
 
 export default {
     data: () => ({
-        select: { },
-        items: [
-          { state: 'Morning', abbr: 'FL' },
-          { state: 'Afternoon', abbr: 'GA' },
-          { state: 'Evening', abbr: 'NE' },
-        ],
+        items: ['Morning','Afternoon','Evening'],
     }),
 }
 </script>
@@ -94,6 +76,5 @@ export default {
 .colour {
     background-color: rgb(208, 188, 255)
 }
-
 </style>
 

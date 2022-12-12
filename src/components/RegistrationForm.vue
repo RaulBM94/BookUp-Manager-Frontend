@@ -14,18 +14,20 @@
                                 v-model="newUser.surname"></v-text-field>
                         </v-row>
                         <v-row allign="center" class="mx-0 mb-3 colour">
-                            <v-text-field label="Email" :rules="emailRules" hide-details="auto" filled
+                            <v-text-field label="Email" hide-details="auto" filled
                                 v-model="newUser.email"></v-text-field>
                         </v-row>
                         <v-row allign="center" class="mx-0 mb-3 colour">
                             <v-text-field label="Contraseña" :type="visible ? 'text' : 'password'" hide-details="auto"
-                                append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" @click:append="visible = !visible"
-                                filled v-model="newUser.password"></v-text-field>
+                                class="form-control mb-1"
+                                v-bind:class="{ 'is-invalid': !passwordValidOrEmpty, 'is-valid': passwordValid }"
+                                v-model="newUser.password" filled></v-text-field>
                         </v-row>
                         <v-row allign="center" class="mx-0 colour mb-3">
                             <v-text-field label="Confirmar Contraseña" :type="visible ? 'text' : 'password'"
-                                hide-details="auto" append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
-                                @click:append="visible = !visible" filled></v-text-field>
+                                hide-details="auto" filled class="form-control mb-1"
+                                v-bind:class="{ 'is-invalid': !passwordsEqualOrEmpty, 'is-valid': passwordsEqualNotEmpty }"
+                                v-model="password2"></v-text-field>
                         </v-row>
                         <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
                             <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
@@ -93,15 +95,12 @@
                     </v-card-actions>
                 </v-card>
             </section>
-
-
         </form>
     </div>
 </template>
 
 <script>
-// import API from '../services/api'
-import { useAuthStore, useRestaurantStore } from '../stores/stores'
+import API from '../services/api'
 export default {
     data() {
         return {
@@ -121,9 +120,7 @@ export default {
                 password: ""
             },
             password2: "",
-            store1: useAuthStore(),
-            store2: useRestaurantStore()
-
+            visible:false
         }
     },
     computed: {
@@ -161,20 +158,22 @@ export default {
             this.$emit("toggleForm")
         },
         async done() {
-            // if (
-            //     this.emailValid &&
-            //     this.passwordValid
-            // ) {
-            //     const response = await API.signup(this.newUser)
-            //     if (response.error) {
-            //         alert('Error creating account')
-            //     } else {
-            // this.store.login(response.token, response.email)
-            this.$router.push({ name: 'personal' })
-        }
+            if (
+                this.emailValid &&
+                this.passwordValid
+            ) {
+                const response = await API.signup(this.newUser)
+                await API.createRestaurant(this.restaurant)
+                if (response.error) {
+                    alert('Error creating account')
+                    console.log(response.error)
+                } else {
+                    this.store.login(response.token, response.email)
+                    this.$router.push({ name: 'personal' })
+                }
+            }
+        },
     }
-    // },
-    // }
 }
 </script>
 
