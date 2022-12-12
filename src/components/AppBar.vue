@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <header>
         <v-app-bar color="deep-purple accent-4" dense dark>
             <v-menu left bottom>
                 <template v-slot:activator="{ on, attrs }">
@@ -9,12 +9,12 @@
                 </template>
 
                 <v-list>
-                    <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+                    <v-list-item-group active-class="deep-purple--text text--accent-4">
                         <v-list-item>
                             <v-list-item-icon>
                                 <v-icon>mdi-home</v-icon>
                             </v-list-item-icon>
-                            <v-list-item-title>Home</v-list-item-title>
+                                <router-link :to="{name:'home'}">Home</router-link>
                         </v-list-item>
 
                         <v-list-item>
@@ -35,7 +35,7 @@
                             <v-list-item-icon>
                                 <v-icon>mdi-account</v-icon>
                             </v-list-item-icon>
-                            <v-list-item-title>Área Clientes</v-list-item-title>
+                            <router-link :to="{name:'login'}">Área Clientes</router-link>
                         </v-list-item>
 
                         <v-list-item>
@@ -65,11 +65,21 @@
             <v-toolbar-title>BookUp Manager</v-toolbar-title>
 
         </v-app-bar>
-    </div>
+    </header>
 
 </template>
 
 <script>
+
+export default {
+  data() {
+    return {
+    }
+  },
+  methods: {
+   
+  },
+}
 
 </script>
 

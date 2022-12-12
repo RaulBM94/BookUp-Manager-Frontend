@@ -22,6 +22,7 @@
 
   <div class="rectangle-1032"></div>
 
+  
   <svg
     class="icons-mobile_friendly_24px"
     width="36"
@@ -576,8 +577,6 @@ export default {
   left: 158px;
   top: 938px;
 }
-
-
 
 </style>
 

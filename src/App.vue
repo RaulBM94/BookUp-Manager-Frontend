@@ -10,7 +10,7 @@
 
 <script>
 import AppBar from './components/AppBar.vue';
-import AppFooter from './components/AppFooter.vue'
+import AppFooter from './components/AppFooter.vue';
 
 export default {
   name: 'App',
