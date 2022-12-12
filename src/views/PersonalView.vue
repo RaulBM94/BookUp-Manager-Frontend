@@ -1,5 +1,5 @@
 <template>
-  <div class="desktop" justify="center">
+  <v-row class="desktop mx-auto my-12" justify="center">
     <div class="group-2608584">
       <router-link :to="{name:'reservation-home'}" class="small-fab">
         <svg
@@ -47,7 +47,7 @@
         <div class="perfil">Perfil</div>
       </button>
     </div>
-  </div>
+  </v-row>
 </template>
 <script>
 export default {

@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import { useAuthStore } from '@/stores/stores';
 import API from '../services/api'
 export default {
     data() {
@@ -109,9 +110,9 @@ export default {
             restaurant: {
                 name: "",
                 direction: "",
-                has_breakfast: "",
-                has_dinner: "",
-                has_lunch: "",
+                has_breakfast: false,
+                has_dinner: false,
+                has_lunch: false,
             },
             newUser: {
                 name: "",
@@ -120,7 +121,8 @@ export default {
                 password: ""
             },
             password2: "",
-            visible:false
+            visible:false,
+            store: useAuthStore()
         }
     },
     computed: {
@@ -169,6 +171,7 @@ export default {
                     console.log(response.error)
                 } else {
                     this.store.login(response.token, response.email)
+
                     this.$router.push({ name: 'personal' })
                 }
             }
