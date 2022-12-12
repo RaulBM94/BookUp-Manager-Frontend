@@ -3,50 +3,97 @@
         <v-card-title>Crear Reserva</v-card-title>
         <v-card-text>
             <v-row allign="center" class="mx-0 mb-3 colour">
+                <v-text-field label="Fecha" hide-details="auto" filled>
+                    v-model="user.date"></v-text-field>
+            </v-row>
+            <v-row>
+                <v-container fluid>
+                    <v-row allign="center">
+                        <v-col cols="6">
+                            <v-subheader class="mx-0 mb-3 colour">
+                                Turno 
+                            </v-subheader>
+                        </v-col>
+                        <v-col cols="6">
+                            <v-select v-model="select" class="mx-0 mb-3 colour" :items="items"
+                                item-text="state" item-value="abbr" label="Select" persistent-hint return-object
+                                single-line></v-select>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-row>
+
+            <v-row allign="center" class="mx-0 mb-3 colour">
+                <v-text-field label="Hora de reserva" hide-details="auto" filled>
+                    v-model="user.hourReservation"></v-text-field>
+            </v-row>
+            <v-row allign="center" class="mx-0 mb-3 colour">
+                <v-text-field label="Restaurante" hide-details="auto" filled>
+                    v-model="user.restaurant"></v-text-field>
+            </v-row>
+            <v-row allign="center" class="mx-0 mb-3 colour">
+                <v-text-field label="Mesa" hide-details="auto" filled>
+                    v-model="user.table"></v-text-field>
+            </v-row>
+            <v-row allign="center" class="mx-0 mb-3 colour">
+                <v-text-field label="Nombre" hide-details="auto" filled>
+                    v-model="user.name"></v-text-field>
+            </v-row>
+            <v-row allign="center" class="mx-0 mb-3 colour">
                 <v-text-field label="Teléfono" hide-details="auto" filled>
-            v-model="User.phone"></v-text-field>
+                    v-model="user.phone"></v-text-field>
             </v-row>
             <v-row allign="center" class="mx-0 mb-3 colour">
                 <v-text-field label="Email" hide-details="auto" filled>
-                    v-model="User.email"></v-text-field>
+                    v-model="user.email"></v-text-field>
             </v-row>
             <v-row allign="center" class="mx-0 mb-3 colour">
-                <v-text-field label="Hora de reserva" hide-details="auto" filled>
-                    v-model="User.email"></v-text-field>
+                <v-text-field label="Personas" hide-details="auto" filled>
+                    v-model="user.people"></v-text-field>
             </v-row>
-            <v-row allign="center" class="mx-0 mb-3 colour">
-                <v-text-field label="Personas" :rules="emailRules" hide-details="auto" filled></v-text-field>
-                </v-row>
         </v-card-text>
         <v-card-actions>
-            <v-row allign="center" class="mx-0 " >
-                <v-btn class="mx-2" dark large color="deep-purple" @click="reserve" elevation="2">
+            <v-row allign="center" class="mx-0 ">
+                <v-btn class="mx-2" dark large color="deep-purple" @click.prevent="reserve" elevation="2">
                     <v-spacer>Añadir</v-spacer>
                 </v-btn>
             </v-row>
-
         </v-card-actions>
     </v-card>
 </template>
 
 <script>
+//import API from '../services/api'
 
+// export default {
+//     data() {
+//         return {
+//             user: {
+//                 phone: "",
+//                 email: "",
+//                 hourReservation: "",
+//                 people: ""
+//             }
+//         }
+//     // }
+// },
+
+export default {
+    data: () => ({
+        select: { },
+        items: [
+          { state: 'Morning', abbr: 'FL' },
+          { state: 'Afternoon', abbr: 'GA' },
+          { state: 'Evening', abbr: 'NE' },
+        ],
+    }),
+}
 </script>
 
 <style scoped>
-.colour{
+.colour {
     background-color: rgb(208, 188, 255)
 }
-.cap{
-position: absolute;
-width: 432px;
-height: 106px;
-left: -12px;
-top: 64px; 
-background: #5D26A3;
-}
-
-
 
 </style>
 
