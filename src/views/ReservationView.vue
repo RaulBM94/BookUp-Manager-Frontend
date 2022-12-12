@@ -7,7 +7,7 @@
                     v-model="user.date"></v-text-field>
             </v-row>
             <v-row allign="center" class="mx-0 mb-3 colour">
-                        <v-select :items="items" hide-details="auto" filled label="Turno"></v-select>
+                <v-select :items="items" hide-details="auto" filled label="Turno"></v-select>
             </v-row>
 
             <v-row allign="center" class="mx-0 mb-3 colour">
@@ -38,6 +38,9 @@
                 <v-text-field label="Personas" hide-details="auto" filled>
                     v-model="user.people"></v-text-field>
             </v-row>
+            <v-row class="mx-0 mb-3 colour">
+                <v-textarea filled name="Notas" label="Notas" value=""></v-textarea>
+            </v-row>
         </v-card-text>
         <v-card-actions>
             <v-row allign="center" class="mx-0 ">
@@ -67,7 +70,7 @@
 
 export default {
     data: () => ({
-        items: ['Morning','Afternoon','Evening'],
+        items: ['Morning', 'Afternoon', 'Evening'],
     }),
 }
 </script>

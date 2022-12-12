@@ -6,6 +6,7 @@ import AuthView from '../views/AuthView.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
 import ReservationView from '../views/ReservationView.vue'
+import AcceptReservation from '../views/AcceptReservation.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,11 @@ const routes = [
     path:'/reservation',
     name:'reservation',
     component:ReservationView
+  },
+  {
+    path:'/acceptreservation',
+    name:'accept',
+    component:AcceptReservation
   }
 ]
 

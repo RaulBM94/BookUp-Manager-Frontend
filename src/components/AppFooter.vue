@@ -24,7 +24,7 @@
           <v-divider></v-divider>
   
           <v-card-text class="white--text">
-            {{ new Date().getFullYear() }} — <strong>BookUp Manager</strong>
+            {{ new Date().getFullYear() }} — <strong>BookUp Manager Copyright © Todos los derechos reservados</strong>
           </v-card-text>
         </v-card>
       </v-footer>
