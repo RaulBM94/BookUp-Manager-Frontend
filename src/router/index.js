@@ -5,7 +5,7 @@ import MailView from '../views/MailView.vue'
 import AuthView from '../views/AuthView.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
-import ReservationView from '../views/ReservationView.vue'
+import ReservationCreate from '../views/ReservationCreate.vue'
 import AcceptReservation from '../views/AcceptReservation.vue'
 import ReservationPage from '@/views/ReservationPage.vue'
 import ReservationSearch from '@/views/ReservationSearch.vue'
@@ -35,7 +35,7 @@ const routes = [
     component: PersonalView
   },
   {
-    path: '/reservation',
+    path: '/personal/reservation',
     name: 'reservation-home',
     component: ReservationPage
   },
@@ -48,7 +48,7 @@ const routes = [
   {
     path:'/reservation/create',
     name:'reservation',
-    component:ReservationView
+    component:ReservationCreate,
   },
   {
     path:'/acceptreservation',
