@@ -83,26 +83,26 @@
                         </v-list-item>
                         <v-list-item>
                             <v-list-item-icon>
-                                <v-icon>mdi-iconoir-profile-circled</v-icon>
+                                <v-icon>mdi-account-box</v-icon>
                             </v-list-item-icon>
                             <v-list-item-title>Perfil</v-list-item-title>
                         </v-list-item>
                         <v-list-item>
                             <v-list-item-icon>
-                                <v-icon>mdi-menu-book-sharp</v-icon>
+                                <v-icon>mdi-book-open</v-icon>
                             </v-list-item-icon>
                             <v-list-item-title>Gestionar reservas</v-list-item-title>
                         </v-list-item>
 
                         <v-list-item>
                             <v-list-item-icon>
-                                <v-icon>mdi-table-restaurant-rounded</v-icon>
+                                <v-icon>mdi-table-chair</v-icon>
                             </v-list-item-icon>
                             <v-list-item-title>Gestionar Mesas</v-list-item-title>
                         </v-list-item>
                         <v-divider></v-divider>
                         <v-list-item @click.prevent="logout" > 
-                        <v-list-item-title>Salir</v-list-item-title>
+                        <v-list-item-title><v-spacer>SALIR</v-spacer></v-list-item-title>
                         </v-list-item>
                 </v-list>
                
