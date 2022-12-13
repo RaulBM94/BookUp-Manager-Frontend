@@ -3,19 +3,24 @@
         <v-card-title justify="center">Iniciar Sesión</v-card-title>
         <v-card-text>
             <v-row allign="center" class="mx-0 mb-3 colour">
-                <v-text-field label="Email" :rules="emailRules" hide-details="auto" filled v-model="newUser.email"></v-text-field>
+                <v-text-field label="Email" :rules="emailRules" hide-details="auto" filled
+                    v-model="newUser.email"></v-text-field>
             </v-row>
             <v-row allign="center" class="mx-0 mb-3 colour">
                 <v-text-field label="Contraseña" :type="visible ? 'text' : 'password'" hide-details="auto"
-                    append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" @click:append="visible = !visible"
-                    filled v-model="newUser.password"></v-text-field>
+                    append-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" @click:append="visible = !visible" filled
+                    v-model="newUser.password"></v-text-field>
             </v-row>
             <v-row justify="center" class="mx-0">
-                <a @click="toggleForm" class="mx-0 mt-3 mb-3">No tengo cuenta</a>
+                <v-col cols="6">
+                    <a @click="toggleForm" class="mx-0 mt-3 mb-3">No tengo cuenta</a>
+                </v-col>
                 <v-spacer></v-spacer>
-                <v-btn class="mx-2" dark large color="deep-purple" @click="login" elevation="2">
-                    Ingresar
-                </v-btn>
+                <v-col cols="6">
+                    <v-btn class="mx-2" dark large color="deep-purple" @click="login" elevation="2">
+                        Ingresar
+                    </v-btn>
+                </v-col>
             </v-row>
         </v-card-text>
         <v-card-actions>
@@ -26,7 +31,7 @@
 
 <script>
 import API from '../services/api'
-import { useAuthStore } from '../stores/stores'
+import { useAuthStore, useRestaurantStore  } from '../stores/stores'
 export default {
     data() {
         return {
@@ -40,7 +45,8 @@ export default {
                 email: '',
                 password: ''
             },
-            store: useAuthStore()
+            store: useAuthStore(),
+            restaurantStore:useRestaurantStore()
         }
     },
     methods: {
@@ -53,6 +59,7 @@ export default {
                 alert('wrong username/password') // No funciona
             } else {
                 this.store.login(response.token, response.email)
+                this.restaurantStore.getRestaurantInfo()
                 this.$router.push({ name: 'personal' })
             }
         },
