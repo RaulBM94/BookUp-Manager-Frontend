@@ -1,6 +1,6 @@
 <template>
     <header>
-        <v-app-bar app color="deep-purple accent-4" dense dark>
+        <v-app-bar color="deep-purple accent-4" dense dark>
             <v-menu left bottom>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on">
