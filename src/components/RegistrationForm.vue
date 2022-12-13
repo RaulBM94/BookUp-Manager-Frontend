@@ -64,11 +64,10 @@
 
             <v-row align="center" class="mx-0 mb-3" justify="center">
               <v-col fluid>
-                <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"
-                  value="true"></v-checkbox>
+                <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"></v-checkbox>
                 <v-checkbox v-model="restaurant.has_lunch" label="Incluye horario de almuerzo"
-                  value="true"></v-checkbox>
-                <v-checkbox v-model="restaurant.has_dinner" label="Incluye horario de cena" value="true"></v-checkbox>
+                  ></v-checkbox>
+                <v-checkbox v-model="restaurant.has_dinner" label="Incluye horario de cena" ></v-checkbox>
               </v-col>
             </v-row>
 

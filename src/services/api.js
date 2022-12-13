@@ -7,7 +7,6 @@ const API = axios.create({
 async function signup(newUser) {
   try {
     const { data } = await API.post('/auth/signup', newUser)
-    localStorage.setItem('token_value',data.token_value)
     return data
   } catch (error) {
     return { error: error.message }
@@ -17,22 +16,32 @@ async function signup(newUser) {
 async function login(newUser) {
   try {
     const { data } = await API.post('/auth/login', newUser)
-    localStorage.setItem('token_value',data.token_value)
     return data
   } catch (error) {
     return { error: error.message }
   }
 }
 
+async function getRestaurant(){
+  try {
+    const { data } = await API.get('/restaurant', {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return data
+  }
+  catch (err) {
+    return err
+  }
+}  
 async function createRestaurant(restaurant) {
   try {
     const { data } = await API.post('/restaurant', restaurant, {
       headers: {
-        token: localStorage.getItem('token_value')
+        token: localStorage.getItem('token')
       },
-    }
-
-    )
+    })
     return data
   }
   catch (err) {
@@ -57,7 +66,6 @@ export default {
   signup,
   login,
   getUserById,
-  createRestaurant
-
-
+  createRestaurant,
+  getRestaurant
 }
