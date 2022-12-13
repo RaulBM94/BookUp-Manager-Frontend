@@ -35,6 +35,7 @@ export const useRestaurantStore = defineStore('restaurant', {
       has_breakfast: useStorage('has_breakfast', null),
       has_lunch: useStorage('has_lunch', null),
       has_dinner: useStorage('has_lunch', null),
+      num_tables: useStorage('num_tables', null)
     }
   },
   getters: {
@@ -45,16 +46,18 @@ export const useRestaurantStore = defineStore('restaurant', {
         has_breakfast: this.has_breakfast,
         has_lunch: this.has_lunch,
         has_dinner: this.has_dinner,
+        num_tables: this.num_tables
       }
     }
   },
   actions: {
-    setRestaurantInfo(name, direction, has_breakfast, has_dinner, has_lunch) {
-      this.name = name,
-        this.direction = direction,
-        this.has_breakfast = has_breakfast,
-        this.has_lunch = has_lunch,
-        this.has_dinner = has_dinner
+    setRestaurantInfo(name, direction, has_breakfast, has_dinner, has_lunch, num_tables) {
+      this.name = name
+      this.direction = direction
+      this.has_breakfast = has_breakfast
+      this.has_lunch = has_lunch
+      this.has_dinner = has_dinner
+      this.num_tables = num_tables
     }
   }
 })

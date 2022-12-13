@@ -7,7 +7,7 @@
                 fill="#6D27C9" />
         </svg>
 
-        <div class="rectangle-115" ></div>
+        <div class="rectangle-115"></div>
         <div class="frame-32">
             <v-row class=" mx-0" hide-details="auto" justify="center">
                 <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date"
@@ -25,6 +25,11 @@
                         </v-btn>
                     </v-date-picker>
                 </v-menu>
+            </v-row>
+            <v-row>
+                <v-col>
+                    
+                </v-col>
             </v-row>
         </div>
         <v-btn class="extended-fab-dark mx-0" justify="center" max-height="52px">
