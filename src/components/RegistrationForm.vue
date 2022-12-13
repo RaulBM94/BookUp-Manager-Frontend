@@ -65,15 +65,15 @@
             <v-row align="center" class="mx-0 mb-3" justify="center">
               <v-col fluid>
                 <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"></v-checkbox>
-                <v-checkbox v-model="restaurant.has_lunch" label="Incluye horario de almuerzo"
-                  ></v-checkbox>
-                <v-checkbox v-model="restaurant.has_dinner" label="Incluye horario de cena" ></v-checkbox>
+                <v-checkbox v-model="restaurant.has_lunch" label="Incluye horario de almuerzo"></v-checkbox>
+                <v-checkbox v-model="restaurant.has_dinner" label="Incluye horario de cena"></v-checkbox>
               </v-col>
             </v-row>
 
             <v-row>
               <v-col>
-                <v-slider min="1" max="50" v-model="restaurant.num_tables" label="Número de mesas" thumb-color="purple" thumb-label="always"></v-slider>
+                <v-slider min="1" max="50" v-model="restaurant.num_tables" label="Número de mesas" thumb-color="purple"
+                  thumb-label="always"></v-slider>
               </v-col>
             </v-row>
 
@@ -168,16 +168,18 @@ export default {
         this.passwordValid
       ) {
         const response = await API.signup(this.newUser)
+        localStorage.setItem('token_value',response.token_value)
         await API.createRestaurant(this.restaurant)
         if (response.error) {
           alert('Error creating account')
           console.log(response.error)
         } else {
-          this.authStore.login(response.token, response.email)
-          const {name, direction, has_breakfast, has_dinner, has_lunch, num_tables} = this.restaurant
+          const { name, direction, has_breakfast, has_dinner, has_lunch, num_tables } = this.restaurant
           this.restStore.setRestaurantInfo(name, direction, has_breakfast, has_dinner, has_lunch, num_tables)
           this.$router.push({ name: 'personal' })
         }
+      } else{
+        console.log("error")
       }
     },
   }

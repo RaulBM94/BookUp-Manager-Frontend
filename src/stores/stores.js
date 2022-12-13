@@ -4,7 +4,7 @@ import { useStorage } from '@vueuse/core' // sincroniza pinia con localStorage
 export const useAuthStore = defineStore('auth', {
   state: () => {
     return {
-      token: useStorage('token', null),
+      token: useStorage('token_value', null),
       email: useStorage('email', null)
     }
   },
