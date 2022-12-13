@@ -1,6 +1,6 @@
 <template>
     <header>
-        <v-app-bar color="deep-purple accent-4" dense dark>
+        <v-app-bar v-if="!authStore.isLoggedIn" color="deep-purple accent-4" dense dark>
             <v-menu left bottom>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on">
@@ -65,22 +65,78 @@
             <v-toolbar-title>BookUp Manager</v-toolbar-title>
 
         </v-app-bar>
+        <v-app-bar v-else  color="deep-purple accent-4" dense dark>
+            <v-menu left bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on">
+                        <v-icon>mdi-menu</v-icon>
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <v-list-item-group active-class="deep-purple--text text--accent-4"></v-list-item-group>
+                        <v-list-item>
+                            <v-list-item-icon>
+                                <v-icon>mdi-home</v-icon>
+                            </v-list-item-icon>
+                                <router-link :to="{name:'home'}">Home</router-link>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-list-item-icon>
+                                <v-icon>mdi-iconoir-profile-circled</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>Perfil</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item>
+                            <v-list-item-icon>
+                                <v-icon>mdi-menu-book-sharp</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>Gestionar reservas</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item>
+                            <v-list-item-icon>
+                                <v-icon>mdi-table-restaurant-rounded</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>Gestionar Mesas</v-list-item-title>
+                        </v-list-item>
+                        <v-divider></v-divider>
+                        <v-list-item @click.prevent="logout" > 
+                        <v-list-item-title>Salir</v-list-item-title>
+                        </v-list-item>
+                </v-list>
+               
+            </v-menu>
+            <v-spacer></v-spacer>
+            <v-toolbar-title>BookUp Manager</v-toolbar-title>
+
+        </v-app-bar> 
     </header>
 
 </template>
 
 <script>
+import { useAuthStore } from '@/stores/stores';
 
 export default {
-  data() {
-    return {
+    data() {
+        return {
+authStore:useAuthStore()
+        };
+    },
+    methods:{
+        logout(){
+            this.authStore.logout()
+                this.$router.push({
+                    name:'home'
+                })
+            }
+        }
     }
-  },
-  methods: {
-   
-  },
-}
 
+
+
+    
 </script>
 
 <style lang="scss" scoped>

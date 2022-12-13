@@ -10,6 +10,7 @@ import AcceptReservation from '../views/AcceptReservation.vue'
 import ReservationPage from '@/views/ReservationPage.vue'
 import ReservationSearch from '@/views/ReservationSearch.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -59,7 +60,9 @@ const routes = [
     path:'/reservation/search',
     name:'reservation-search',
     component:ReservationSearch
-  }
+  },
+ 
+  
 ]
 
 const router = new VueRouter({
