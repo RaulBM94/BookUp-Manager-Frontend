@@ -3,8 +3,8 @@
         <v-card-title>Crear Reserva</v-card-title>
         <v-card-text>
             <v-row allign="center" class="mx-0 mb-3 colour">
-                <v-text-field label="Fecha" hide-details="auto" filled>
-                    v-model="user.date"></v-text-field>
+                <v-text-field label="Fecha" hide-details="auto" filled v-model="user.date">
+                    </v-text-field>
             </v-row>
             <v-row allign="center" class="mx-0 mb-3 colour">
                 <v-select :items="items" hide-details="auto" filled label="Turno"></v-select>
@@ -53,26 +53,22 @@
 </template>
 
 <script>
-//import API from '../services/api'
-
-// export default {
-//     data() {
-//         return {
-//             user: {
-//                 phone: "",
-//                 email: "",
-//                 hourReservation: "",
-//                 people: ""
-//             }
-//         }
-//     // }
-// },
+// import API from '../services/api'
 
 export default {
-    data: () => ({
-        items: ['Morning', 'Afternoon', 'Evening'],
-    }),
+    data() {
+        return {
+            reservation: {
+                phone: "",
+                email: "",
+                hourReservation: "",
+                people: ""
+            },
+            items: ['Morning', 'Afternoon', 'Evening'],
+        }
+    }
 }
+
 </script>
 
 <style scoped>
