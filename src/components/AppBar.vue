@@ -99,7 +99,7 @@
                
             </v-menu>
             <v-spacer></v-spacer>
-            <v-toolbar-title>BookUp Manager</v-toolbar-title>
+            <v-toolbar-title> BookUp Manager</v-toolbar-title>
 
         </v-app-bar> 
     </header>

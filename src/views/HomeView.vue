@@ -54,7 +54,7 @@
     />
   </svg>
   <svg
-    class="icons-access_time_24px"
+  
     width="36"
     height="36"
     viewBox="0 0 36 36"
@@ -84,7 +84,7 @@
     ></span>
   </div>
 
-  <div class="lista-de-espera">Lista de espera<br /><br /><br /><br /></div>
+  
 
   <div class="frame-352">
     <div class="frame-27">
@@ -362,16 +362,7 @@ export default {
   color: #ffffff;
   font: var(--roboto14px, 400 14px "Roboto", sans-serif);
 }
-.lista-de-espera {
-  color: #ffffff;
-  text-align: center;
-  font: 400 16px "Roboto", sans-serif;
-  position: absolute;
-  left: 1733px;
-  top: 602px;
-  width: 82px;
-  height: 13px;
-}
+
 .frame-352 {
   padding: 0px 26px 0px 0px;
   display: flex;
