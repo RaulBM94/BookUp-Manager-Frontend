@@ -6,8 +6,9 @@
                 <v-text-field label="Correo" hide-details="auto" filled v-model="reservation.customer_email">
                     v-model="user.email"></v-text-field>
             </v-row>
-            <v-row class="mx-0 mb-3 rounded colour">
-                <v-textarea filled label="Mensaje" v-model="reservation.notes" hide-details="auto"></v-textarea>
+            <v-row fluid max-width="360" class="mx-0 mb-3 rounded colour" >
+                <v-textarea filled label="Mensaje" auto-grow hide-details="auto"
+                    value="Le indicamos que tiene su reserva para el día..."></v-textarea>
             </v-row>
         </v-card-text>
         <v-card-actions>

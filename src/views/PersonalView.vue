@@ -32,8 +32,13 @@
         <v-col cols="6">Gestionar Mesas</v-col>
       </v-btn>
     </v-row>
+    <div class="color"></div>
+    <div class="wave w1"></div>
+    <div class="wave w2"></div>
+  
   </div>
 </template>
+
 <script>
 export default {
 };
@@ -43,5 +48,52 @@ export default {
   flex-shrink: 0;
   position: relative;
   overflow: visible;
+}
+.color{
+width: 100%;
+height:70%;
+background-color: rgb(rgb(42, 42, 152));
+position: absolute;
+top:0;
+}
+.wave{
+ width: 300%;
+ height: 100%;
+ position: absolute;
+ top: 150px;
+ left: 0;
+background-image: url(../views/images/wd1.svg);
+background-position: bottom;
+}
+.w1{
+  animation:w1 7s linear infinite;
+}
+.w2{
+  animation: w2 7s linear -.125s infinite, desplazamiento 7s ease -.125s infinite;
+  opacity: 0.5;
+}
+@keyframes w1 {
+0%{
+margin-left: 0;
+}
+100%{
+  margin-left: -1920px;
+}
+}
+@keyframes w2 {
+0%{
+margin-left: 0;
+}
+100%{
+  margin-left: -1920px;
+}
+}
+@keyframes desplazamiento{
+  0%, 100%{
+    transform: translateY(-25px);  
+  }
+  50%{
+    transform:translateY(10px);
+  }
 }
 </style>
