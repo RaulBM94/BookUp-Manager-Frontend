@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto my-12" max-width="360">
+  <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)" >
     <v-card-title justify="center">Iniciar Sesión</v-card-title>
     <v-card-text>
       <v-row allign="center" class="mx-0 mb-3 colour">

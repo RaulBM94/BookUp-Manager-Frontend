@@ -76,33 +76,24 @@
                 <v-list>
                     <v-list-item-group active-class="deep-purple--text text--accent-4"></v-list-item-group>
                         <v-list-item>
-                            <v-list-item-icon>
-                                <v-icon>mdi-home</v-icon>
-                            </v-list-item-icon>
-                                <router-link :to="{name:'home'}">Home</router-link>
+                            <v-list-item-title><router-link :to="{name:'home'}">Home</router-link></v-list-item-title>
                         </v-list-item>
                         <v-list-item>
-                            <v-list-item-icon>
-                                <v-icon>mdi-account-box</v-icon>
-                            </v-list-item-icon>
+                            <v-list-item-title><router-link :to="{name:'personal'}">Área Clientes</router-link></v-list-item-title>
+                        </v-list-item>
+                        <v-list-item>
                             <v-list-item-title>Perfil</v-list-item-title>
                         </v-list-item>
                         <v-list-item>
-                            <v-list-item-icon>
-                                <v-icon>mdi-book-open</v-icon>
-                            </v-list-item-icon>
-                            <v-list-item-title>Gestionar reservas</v-list-item-title>
+                            <v-list-item-title><router-link :to="{name:'reservation-home'}">Gestionar Reservas</router-link></v-list-item-title>
                         </v-list-item>
 
                         <v-list-item>
-                            <v-list-item-icon>
-                                <v-icon>mdi-table-chair</v-icon>
-                            </v-list-item-icon>
                             <v-list-item-title>Gestionar Mesas</v-list-item-title>
                         </v-list-item>
                         <v-divider></v-divider>
                         <v-list-item @click.prevent="logout" > 
-                        <v-list-item-title><v-spacer>SALIR</v-spacer></v-list-item-title>
+                        <v-list-item-title>Salir</v-list-item-title>
                         </v-list-item>
                 </v-list>
                
