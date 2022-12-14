@@ -9,6 +9,7 @@ import ReservationView from '../views/ReservationView.vue'
 import AcceptReservation from '../views/AcceptReservation.vue'
 import ReservationPage from '@/views/ReservationPage.vue'
 import ReservationSearch from '@/views/ReservationSearch.vue'
+import ReservationSend from '@/views/ReservationSend.vue'
 
 
 Vue.use(VueRouter)
@@ -61,7 +62,11 @@ const routes = [
     name:'reservation-search',
     component:ReservationSearch
   },
- 
+  {
+    path:'/reservation/send',
+    name:'reservation-send',
+    component:ReservationSend
+  },
   
 ]
 

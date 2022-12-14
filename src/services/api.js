@@ -65,7 +65,6 @@ async function getUserById(client) {
 //RESERVATIONS
 async function createReservation(reservation){
   try {
-  
     const { data } = await API.post('/reservation', reservation, {
       headers: {
         token_value:localStorage.getItem('token_value')
