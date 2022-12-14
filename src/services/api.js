@@ -76,11 +76,30 @@ async function createReservation(reservation){
     return err
   }
 }
+
+async function searchReservation(search){
+  console.log("OK")
+  try {
+    const { data } = await API.get('/reservation', {
+      headers: {
+        token_value:localStorage.getItem('token_value')
+      },
+      params:{
+        search: search
+      }
+    })
+    return data
+  }
+  catch (err) {
+    return err
+  }
+}
 export default {
   signup,
   login,
   getUserById,
   createRestaurant,
   getRestaurant,
-  createReservation
+  createReservation,
+  searchReservation
 }

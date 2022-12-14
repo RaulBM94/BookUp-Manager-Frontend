@@ -1,6 +1,6 @@
 <template>
     <header>
-        <v-app-bar v-if="!authStore.isLoggedIn" color="deep-purple accent-4" dense dark>
+        <v-app-bar app v-if="!authStore.isLoggedIn" color="deep-purple accent-4" dense dark>
             <v-menu left bottom>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on">
@@ -65,7 +65,7 @@
             <v-toolbar-title>BookUp Manager</v-toolbar-title>
 
         </v-app-bar>
-        <v-app-bar v-else  color="deep-purple accent-4" dense dark>
+        <v-app-bar app v-else  color="deep-purple accent-4" dense dark>
             <v-menu left bottom>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on">

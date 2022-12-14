@@ -1,11 +1,12 @@
 <template>
     <div>
-        <v-alert v-if="correct===true"  type="success" dismissible elevation="2">
+        <v-alert app v-if="correct===true"  type="success" dismissible elevation="2">
             Reserva creada con éxito
         </v-alert>
-        <v-alert v-if="correct===false" type="error" dismissible elevation="2">
+        <v-alert app v-if="correct===false" type="error" dismissible elevation="2">
       Se ha producido un error al crear la reserva
     </v-alert>
+    <pre>{{reservation.date}}</pre>
         <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
             <v-card-title>Crear Reserva</v-card-title>
             <v-card-text>
@@ -64,7 +65,7 @@ export default {
     data() {
         return {
             reservation: {
-                date: "",
+                date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
                 shift: "",
                 hour: "",
                 customer_name: "",
