@@ -9,11 +9,11 @@
                 </template>            
                 <v-list>
                     <v-list-item-group active-class="deep-purple--text text--accent-4">
-                        <v-list-item>
+                        <v-list-item :to="{ name: 'home' }">
                             <v-list-item-icon>
                                 <v-icon>mdi-home</v-icon>
                             </v-list-item-icon>
-                                <router-link :to="{name:'home'}">Home</router-link>
+                            Home
                         </v-list-item>
 
                         <v-list-item>
@@ -34,7 +34,7 @@
                             <v-list-item-icon>
                                 <v-icon>mdi-account</v-icon>
                             </v-list-item-icon>
-                            <router-link :to="{name:'login'}">Área Clientes</router-link>
+                            <router-link :to="{ name: 'login' }">Área Clientes</router-link>
                         </v-list-item>
 
                         <v-list-item>
@@ -64,7 +64,7 @@
             <v-toolbar-title>BookUp Manager</v-toolbar-title>
 
         </v-app-bar>
-        <v-app-bar app v-else  color="deep-purple accent-4" dense dark>
+        <v-app-bar app v-else color="deep-purple accent-4" dense dark>
             <v-menu left bottom>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on">
@@ -72,35 +72,36 @@
                     </v-btn>
                 </template>
 
-                <v-list>
+                <v-list nav>
                     <v-list-item-group active-class="deep-purple--text text--accent-4"></v-list-item-group>
-                        <v-list-item>
-                            <v-list-item-title><router-link :to="{name:'home'}">Home</router-link></v-list-item-title>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-title><router-link :to="{name:'personal'}">Área Clientes</router-link></v-list-item-title>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-title>Perfil</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-title><router-link :to="{name:'reservation-home'}">Gestionar Reservas</router-link></v-list-item-title>
-                        </v-list-item>
+                    <v-list-item link @click="go('home')" >
+                        <v-list-item-title> Home</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item :to="{ name: 'personal' }">
+                        <v-list-item-title> Área Clientes</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-list-item-title>Perfil</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item :to="{ name: 'reservation-home' }">
+                        <v-list-item-title >Gestionar
+                                Reservas</v-list-item-title>
+                    </v-list-item>
 
-                        <v-list-item>
-                            <v-list-item-title>Gestionar Mesas</v-list-item-title>
-                        </v-list-item>
-                        <v-divider></v-divider>
-                        <v-list-item @click.prevent="logout" > 
+                    <v-list-item>
+                        <v-list-item-title>Gestionar Mesas</v-list-item-title>
+                    </v-list-item>
+                    <v-divider></v-divider>
+                    <v-list-item @click.prevent="logout">
                         <v-list-item-title>Salir</v-list-item-title>
-                        </v-list-item>
+                    </v-list-item>
                 </v-list>
-               
+
             </v-menu>
             <v-spacer></v-spacer>
             <v-toolbar-title> BookUp Manager</v-toolbar-title>
 
-        </v-app-bar> 
+        </v-app-bar>
     </header>
 
 </template>
@@ -111,22 +112,28 @@ import { useAuthStore } from '@/stores/stores';
 export default {
     data() {
         return {
-authStore:useAuthStore()
+            authStore: useAuthStore()
         };
     },
-    methods:{
-        logout(){
+    methods: {
+        logout() {
             this.authStore.logout()
-                this.$router.push({
-                    name:'home'
-                })
-            }
+            this.$router.push({
+                name: 'home'
+            })
+        },
+        go(name){
+            this.$router.push({
+                name: name
+            })
         }
+
     }
+}
 
 
 
-    
+
 </script>
 
 <style lang="scss" scoped>
