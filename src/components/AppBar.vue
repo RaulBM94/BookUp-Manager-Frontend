@@ -6,8 +6,7 @@
                     <v-btn icon v-bind="attrs" v-on="on">
                         <v-icon>mdi-menu</v-icon>
                     </v-btn>
-                </template>
-
+                </template>            
                 <v-list>
                     <v-list-item-group active-class="deep-purple--text text--accent-4">
                         <v-list-item>

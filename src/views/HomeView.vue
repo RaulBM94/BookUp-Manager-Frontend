@@ -118,7 +118,7 @@ import {
 export default {
   name: 'HomeView',
   components: {
-
+    
   },
 };
 </script>
