@@ -10,6 +10,7 @@
                 <v-textarea filled label="Mensaje" auto-grow hide-details="auto"
                     value="Le indicamos que tiene su reserva para el día..."></v-textarea>
             </v-row>
+            
         </v-card-text>
         <v-card-actions>
             <v-row allign="center" class="mx-0 ">

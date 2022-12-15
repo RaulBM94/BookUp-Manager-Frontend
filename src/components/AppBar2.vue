@@ -79,7 +79,11 @@
           </v-avatar>
         </v-flex>
         <v-flex>
+
           <p class="white--text mt-3 headline">{{this.authStore.get}}</p>
+=======
+          <p class="white--text mt-3 headline">{{name}}</p>
+
         </v-flex>
         <v-flex>
           <v-list>
@@ -121,7 +125,9 @@ export default {
     return {
       authStore: useAuthStore(),
       drawer: false,
+
       name: ''
+
     };
   },
   methods: {
@@ -131,6 +137,11 @@ export default {
       this.$router.push({
         name: 'home'
       })
+    }
+  },
+  beforeCreate:{
+    getName(){
+      this.name=this.authStore.getName()
     }
   }
 }

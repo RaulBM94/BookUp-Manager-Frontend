@@ -43,10 +43,6 @@
         </template>
       </v-hover>
     </v-row>
-    <!-- <div class="color"></div>
-    <div class="wave w1"></div>
-    <div class="wave w2"></div> -->
-
   </div>
 </template>
 
