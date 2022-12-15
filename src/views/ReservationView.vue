@@ -1,23 +1,36 @@
 <template>
     <div>
-        <v-alert app v-if="correct===true"  type="success" dismissible elevation="2">
+        <v-alert class="alert" position="absolute t-0"  v-if="correct === true" type="success" dismissible elevation="2">
             Reserva creada con éxito
         </v-alert>
-        <v-alert app v-if="correct===false" type="error" dismissible elevation="2">
-      Se ha producido un error al crear la reserva
-    </v-alert>
-    <pre>{{reservation.date}}</pre>
+        <v-alert class="alert" v-if="correct === false" type="error" dismissible elevation="2">
+            Se ha producido un error al crear la reserva
+        </v-alert>
         <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
             <v-card-title>Crear Reserva</v-card-title>
             <v-card-text>
-                <v-row allign="center" class="mx-0 mb-3 rounded colour">
-                    <v-text-field label="Fecha" hide-details="auto" filled v-model="reservation.date"
-                        placeholder="aaaa-mm-dd">
-                    </v-text-field>
+                <v-row class="mx-0 mb-3 rounded colour">
+                    <v-menu ref="menu" v-model="menu" :close-on-content-click="false"
+                        :return-value.sync="reservation.date" transition="scale-transition" offset-y min-width="auto">
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-text-field label="Seleccionar fecha" readonly v-bind="attrs" v-on="on" v-model="date"
+                                hide-details="auto" filled></v-text-field>
+                        </template>
+                        <v-date-picker v-model="date" no-title scrollable>
+                            <v-spacer></v-spacer>
+                            <v-btn text color="primary" @click="menu = false">
+                                Cancel
+                            </v-btn>
+                            <v-btn text color="primary" @click="$refs.menu.save(date)">
+                                OK
+                            </v-btn>
+                        </v-date-picker>
+                    </v-menu>
                 </v-row>
-                <v-row allign="center" class="mx-0 mb-3 rounded colour">
-                    <v-select hide-details="auto" filled label="Turno" v-model="reservation.shift" :items="getShift">
-                        </v-select>
+                <v-row allign="center" class="mx-0 mb-3 rounded">
+                    <v-select class="colour" hide-details="auto" filled label="Turno" v-model="reservation.shift"
+                        :items="getShift">
+                    </v-select>
                 </v-row>
 
                 <v-row allign="center" class="mx-0 mb-3 rounded colour">
@@ -55,6 +68,14 @@
                 </v-row>
             </v-card-actions>
         </v-card>
+        <v-snackbar v-model="snackbar" class="">
+            {{ text }}
+            <template v-slot:action="{ attrs }">
+                <v-btn color="purple" text v-bind="attrs" @click="snackbar = false">
+                    Close
+                </v-btn>
+            </template>
+        </v-snackbar>
     </div>
 </template>
 
@@ -64,28 +85,43 @@ import { useRestaurantStore } from '@/stores/stores'
 export default {
     data() {
         return {
+            menu: false,
+            modal: false,
+            snackbar: false,
+            text: "Reserva creada con éxito",
+            text2: "Se ha producido un error al crear la reserva",
             reservation: {
-                date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
                 shift: "",
                 hour: "",
                 customer_name: "",
                 customer_phone: "",
                 customer_email: "",
                 people: 1,
-                notes: "",
+                notes: ""
             },
+            date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             restStore: useRestaurantStore(),
-            correct:""
+            correct: ""
         }
     },
     methods: {
         async add() {
+            this.reservation.date = this.date
             const response = await API.createReservation(this.reservation)
             if (response.error) {
-                this.correct=false 
+                this.correct = false
             } else {
-                this.correct=true
-
+                this.correct = true
+                this.snackbar = true
+                this.reservation.shift = ""
+                this.reservation.hour = ""
+                this.reservation.customer_name = ""
+                this.reservation.customer_phone = ""
+                this.reservation.customer_email = ""
+                this.reservation.people = 1
+                this.reservation.notes = ""
+               
+                this.date = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
             }
         },
         async back() {
@@ -114,6 +150,13 @@ export default {
 <style scoped>
 .colour {
     background-color: rgb(255, 255, 255)
+}
+.alert {
+  position: fixed;
+  top:50px;
+  left:0;
+  width:100%;
+  z-index:2;
 }
 </style>
 

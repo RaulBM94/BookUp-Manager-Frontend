@@ -34,8 +34,7 @@
       </v-btn>
     </v-row>
   
-    <!-- <div class="wave w1"></div>
-    <div class="wave w2"></div> -->
+   
   
   </div>
 </template>
@@ -63,7 +62,7 @@ top:0;
  position: absolute;
  top: 150px;
  left: 0;
-background-image: url(../assets/images/wd1.svg);
+/* background-image: url(../assets/images/wd1.svg); */
 background-position: bottom;
 }
 .w1{

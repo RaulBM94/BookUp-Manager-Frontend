@@ -55,14 +55,24 @@
 
 <script>
   export default {
-      reveal: false,
+    data(){
+      return{
+        reveal: false,
+      }
+    },
       props:{
         reservation: Object
+      },
+
+    methods:{
+      change(){
+        this.reveal=true
       }
+    }
   }
 </script>
 
-<style scoped>
+<style>
 .v-card--reveal {
   bottom: 0;
   opacity: 1 !important;
