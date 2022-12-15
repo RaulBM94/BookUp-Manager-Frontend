@@ -3,7 +3,7 @@
         <v-alert class="alert" position="absolute t-0"  v-if="correct === true" type="success" dismissible elevation="2">
             Reserva creada con éxito
         </v-alert>
-        <v-alert class="alert" v-if="correct === false" type="error" dismissible elevation="2">
+        <v-alert class="alert" position="absolute t-0" v-if="correct === false" type="error" dismissible elevation="2">
             Se ha producido un error al crear la reserva
         </v-alert>
         <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
@@ -27,29 +27,29 @@
                         </v-date-picker>
                     </v-menu>
                 </v-row>
-                <v-row allign="center" class="mx-0 mb-3 rounded">
+                <v-row class="mx-0 mb-3 rounded">
                     <v-select class="colour" hide-details="auto" filled label="Turno" v-model="reservation.shift"
                         :items="getShift">
                     </v-select>
                 </v-row>
 
-                <v-row allign="center" class="mx-0 mb-3 rounded colour">
+                <v-row class="mx-0 mb-3 rounded colour">
                     <v-text-field label="Hora de reserva" hide-details="auto" filled
                         v-model="reservation.hour"></v-text-field>
                 </v-row>
-                <v-row allign="center" class="mx-0 mb-3 rounded colour">
+                <v-row class="mx-0 mb-3 rounded colour">
                     <v-text-field label="Nombre" hide-details="auto" filled
                         v-model="reservation.customer_name"></v-text-field>
                 </v-row>
-                <v-row allign="center" class="mx-0 mb-3 rounded colour">
+                <v-row class="mx-0 mb-3 rounded colour">
                     <v-text-field label="Teléfono" hide-details="auto" filled
                         v-model="reservation.customer_phone"></v-text-field>
                 </v-row>
-                <v-row allign="center" class="mx-0 mb-3 rounded colour">
+                <v-row class="mx-0 mb-3 rounded colour">
                     <v-text-field label="Email" hide-details="auto" filled v-model="reservation.customer_email">
                         v-model="user.email"></v-text-field>
                 </v-row>
-                <v-row allign="center" class="mx-0 mb-3 rounded colour">
+                <v-row class="mx-0 mb-3 rounded colour">
                     <v-text-field v-model="reservation.people" type="number" label="Personas" min="1" max="10"
                         hide-details="auto" filled></v-text-field>
                 </v-row>
@@ -58,7 +58,7 @@
                 </v-row>
             </v-card-text>
             <v-card-actions>
-                <v-row allign="center" class="mx-0 ">
+                <v-row  class="mx-0 ">
                     <v-btn class="mx-2 mb-3" dark large color="rgb(48, 45, 56)" @click.prevent="back"
                         elevation="2">CANCELAR
                     </v-btn>
@@ -68,14 +68,6 @@
                 </v-row>
             </v-card-actions>
         </v-card>
-        <v-snackbar v-model="snackbar" class="">
-            {{ text }}
-            <template v-slot:action="{ attrs }">
-                <v-btn color="purple" text v-bind="attrs" @click="snackbar = false">
-                    Close
-                </v-btn>
-            </template>
-        </v-snackbar>
     </div>
 </template>
 
@@ -87,7 +79,6 @@ export default {
         return {
             menu: false,
             modal: false,
-            snackbar: false,
             text: "Reserva creada con éxito",
             text2: "Se ha producido un error al crear la reserva",
             reservation: {
@@ -112,7 +103,6 @@ export default {
                 this.correct = false
             } else {
                 this.correct = true
-                this.snackbar = true
                 this.reservation.shift = ""
                 this.reservation.hour = ""
                 this.reservation.customer_name = ""
