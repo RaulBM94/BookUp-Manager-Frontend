@@ -2,6 +2,12 @@
   <div class="frame-41">
     <div class="rectangle-103"></div>
 
+    <v-btn class="extended-fab-dark" aling-center>
+      <div class="state-layer">
+        <div class="label-text ">EMPIEZA YA</div>
+      </div>
+    </v-btn>
+    
     <div class="frame-35">
       <div class="tu-app-de-gesti-n-de-reservas-para-tu-restaurante-">
         Tu app de gestión de reservas para tu restaurante.
@@ -11,11 +17,6 @@
         ¡Controla tú mismo las reservas fácilmente y olvídate de los No Show!
       </div>
 
-      <v-btn class="extended-fab-dark">
-        <div class="state-layer">
-          <div class="label-text">EMPIEZA YA</div>
-        </div>
-      </v-btn>
     </div>
 
     <div class="rectangle-1032"></div>
@@ -40,7 +41,7 @@
         fill="white" />
     </svg>
 
-    <div class="servicios">SERVICIOS</div>
+    <v-flex class="servicios ps-6">SERVICIOS</v-flex>
 
     <div class="gesti-n-de-reservas">
       <span><span class="gesti-n-de-reservas-span2"><br /><br /><br /></span></span>
@@ -118,7 +119,6 @@ import {
 export default {
   name: 'HomeView',
   components: {
-    
   },
 };
 </script>

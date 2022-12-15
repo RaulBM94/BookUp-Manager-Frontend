@@ -4,12 +4,6 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-tittle class="white--text">BookUp Manager</v-toolbar-tittle>
       <v-spacer></v-spacer>
-      <v-btn class="success">
-        ingreso
-      </v-btn>
-      <v-btn class="error">
-        salir
-      </v-btn>
     </v-toolbar>
     <v-navigation-drawer app v-if="!authStore.isLoggedIn" v-model="drawer" temporary dark>
       <v-layout mt-4 column align-center>
@@ -85,7 +79,7 @@
           </v-avatar>
         </v-flex>
         <v-flex>
-          <p class="white--text mt-3 headline">Carmensita</p>
+          <p class="white--text mt-3 headline">{{this.authStore.get}}</p>
         </v-flex>
         <v-flex>
           <v-list>
@@ -126,10 +120,12 @@ export default {
   data() {
     return {
       authStore: useAuthStore(),
-      drawer: false
+      drawer: false,
+      name: ''
     };
   },
   methods: {
+    
     logout() {
       this.authStore.logout()
       this.$router.push({
