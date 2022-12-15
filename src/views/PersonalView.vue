@@ -33,9 +33,8 @@
         <v-col cols="6">Gestionar Mesas</v-col>
       </v-btn>
     </v-row>
-    <!-- <div class="color"></div>
-    <div class="wave w1"></div>
-    <div class="wave w2"></div> -->
+  
+   
   
   </div>
 </template>
