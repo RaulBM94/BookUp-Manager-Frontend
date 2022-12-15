@@ -1,5 +1,6 @@
 <template>
-  <div my-auto>
+  <div my-auto>  
+    <div class="color"></div>
     <v-row class="mx-0 my-12" justify="center">
       <v-btn height="50" elevation="4" width="360">
         <v-col cols="3">
@@ -52,7 +53,7 @@ export default {
 .color{
 width: 100%;
 height:70%;
-background-color: rgb(rgb(42, 42, 152));
+background-color: #780dc5;
 position: absolute;
 top:0;
 }
@@ -62,7 +63,7 @@ top:0;
  position: absolute;
  top: 150px;
  left: 0;
-background-image: url(../views/images/wd1.svg);
+/* background-image: url(../assets/images/wd1.svg); */
 background-position: bottom;
 }
 .w1{
@@ -77,7 +78,7 @@ background-position: bottom;
 margin-left: 0;
 }
 100%{
-  margin-left: -1920px;
+  margin-left: -1620px;
 }
 }
 @keyframes w2 {
@@ -85,7 +86,7 @@ margin-left: 0;
 margin-left: 0;
 }
 100%{
-  margin-left: -1920px;
+  margin-left: -1620px;
 }
 }
 @keyframes desplazamiento{
