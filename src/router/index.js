@@ -11,6 +11,9 @@ import ReservationPage from '@/views/ReservationPage.vue'
 // import ReservationSearch from '@/views/ReservationSearch.vue'
 import ReservationSend from '@/views/ReservationSend.vue'
 import ReservationSearch2 from '@/views/ReservationSearch2.vue'
+import PaymentView from '@/views/PaymentView.vue'
+import Success from '../views/SuccessPage.vue'
+import ErrorPage from '../views/ErrorPage.vue'
 
 
 
@@ -69,6 +72,21 @@ const routes = [
     name:'reservation-send',
     component:ReservationSend
   },
+  {
+    path:'/error',
+    name:'Error',
+    component:ErrorPage
+  },
+  {
+    path:'/success',
+    name:'Success',
+    component:Success
+  },
+  {
+    path:'/payment',
+    name:PaymentView,
+    component:PaymentView
+  }
   
 ]
 
