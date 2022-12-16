@@ -11,6 +11,9 @@
             <v-row allign="center" class="colour mx-0 mb-3">
               <v-text-field label="Apellido" hide-details="auto" filled v-model="newUser.surname"></v-text-field>
             </v-row>
+            <v-row allign="center" class="colour mx-0 mb-3">
+              <v-text-field label="Telefono" hide-details="auto" filled v-model="newUser.phone"></v-text-field>
+            </v-row>
             <v-row allign="center" class="mx-0 mb-3 colour">
               <v-text-field label="Email" hide-details="auto" filled v-model="newUser.email"></v-text-field>
             </v-row>
@@ -119,6 +122,7 @@ export default {
       newUser: {
         name: "",
         surname: "",
+        phone: "",
         email: "",
         password: ""
       },

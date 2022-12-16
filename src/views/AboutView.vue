@@ -1,36 +1,28 @@
 <template>
   <div class="frame-40">
-  <div class="rectangle-115"></div>
+    <div class="rectangle-115"></div>
 
-  <div class="frame-32">
-    <div class="calendar">
-      <div class="text-field">
-        <div class="text-field2">
-          <div class="state-layer">
-            <div class="content">
-              <div class="input-text">
-                <div class="input-text2">20/12/2022</div>
+    <div class="frame-32">
+      <div class="calendar">
+        <div class="text-field">
+          <div class="text-field2">
+            <div class="state-layer">
+              <div class="content">
+                <div class="input-text">
+                  <div class="input-text2">20/12/2022</div>
+                </div>
               </div>
-            </div>
 
-            <div class="trailing-icon">
-              <div class="container">
-                <div class="state-layer2">
-                  <svg
-                    class="icons-today_24px"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M19 4H18V2H16V4H8V2H6V4H5C3.89 4 3 4.9 3 6V20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20ZM6.5 13C6.5 11.62 7.62 10.5 9 10.5C10.38 10.5 11.5 11.62 11.5 13C11.5 14.38 10.38 15.5 9 15.5C7.62 15.5 6.5 14.38 6.5 13Z"
-                      fill="#49454F"
-                    />
-                  </svg>
+              <div class="trailing-icon">
+                <div class="container">
+                  <div class="state-layer2">
+                    <svg class="icons-today_24px" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M19 4H18V2H16V4H8V2H6V4H5C3.89 4 3 4.9 3 6V20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20ZM6.5 13C6.5 11.62 7.62 10.5 9 10.5C10.38 10.5 11.5 11.62 11.5 13C11.5 14.38 10.38 15.5 9 15.5C7.62 15.5 6.5 14.38 6.5 13Z"
+                        fill="#49454F" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
@@ -38,30 +30,27 @@
         </div>
       </div>
     </div>
+
+    <div class="extended-fab-dark">
+      <button class="state-layer3">
+        <div class="label-text">BUSCAR</div>
+      </button>
+    </div>
+
+    <div class="selecciona-fecha-de-reserva-">Selecciona fecha de reserva:</div>
+
+    <div class="gesti-n-de-reservas">Gestión de reservas</div>
   </div>
-
-  <div class="extended-fab-dark">
-    <button class="state-layer3">
-      <div class="label-text">BUSCAR</div>
-    </button>
-  </div>
-
-  <div class="selecciona-fecha-de-reserva-">Selecciona fecha de reserva:</div>
-
-  <div class="gesti-n-de-reservas">Gestión de reservas</div>
-</div>
 
 </template>
 
 <script>
 
 
-  export default {
-    name: 'AboutView',
-    components: {
-      
-    }
-  }
+export default {
+  name: 'AboutView',
+  
+}
 </script>
 
 
@@ -70,6 +59,7 @@
 .frame-40 * {
   box-sizing: border-box;
 }
+
 .frame-40 {
   background: #ffffff;
   width: 1920px;
@@ -77,6 +67,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .rectangle-115 {
   background: var(--purple200, #e3d4fd);
   border-radius: 20px;
@@ -86,6 +77,7 @@
   left: 721px;
   top: 158px;
 }
+
 .frame-32 {
   border-radius: 20px;
   display: flex;
@@ -98,6 +90,7 @@
   left: 814px;
   top: 300px;
 }
+
 .calendar {
   background: #f8f5ff;
   flex-shrink: 0;
@@ -105,6 +98,7 @@
   height: 76px;
   position: relative;
 }
+
 .text-field {
   background: #ffffff;
   border-radius: 4px 4px 0px 0px;
@@ -119,6 +113,7 @@
   left: 0px;
   top: 0px;
 }
+
 .text-field2 {
   border-radius: 4px;
   border: solid var(--m3-sys-light-primary, #6750a4);
@@ -132,6 +127,7 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .state-layer {
   border-radius: 4px 4px 0px 0px;
   padding: 4px 0px 4px 16px;
@@ -144,6 +140,7 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .content {
   display: flex;
   flex-direction: column;
@@ -154,6 +151,7 @@
   height: 40px;
   position: relative;
 }
+
 .input-text {
   display: flex;
   flex-direction: row;
@@ -163,6 +161,7 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .input-text2 {
   color: var(--m3-sys-light-on-surface, #1c1b1f);
   text-align: left;
@@ -172,6 +171,7 @@
   align-items: center;
   justify-content: flex-start;
 }
+
 .trailing-icon {
   display: flex;
   flex-direction: column;
@@ -183,6 +183,7 @@
   height: 48px;
   position: relative;
 }
+
 .container {
   border-radius: 100px;
   display: flex;
@@ -194,11 +195,10 @@
   position: relative;
   overflow: hidden;
 }
+
 .state-layer2 {
-  background: var(
-    --m3-state-layers-light-on-surface-variant-opacity-0-12,
-    rgba(73, 69, 79, 0.12)
-  );
+  background: var(--m3-state-layers-light-on-surface-variant-opacity-0-12,
+      rgba(73, 69, 79, 0.12));
   padding: 8px 8px 8px 8px;
   display: flex;
   flex-direction: row;
@@ -208,17 +208,17 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .icons-today_24px {
   flex-shrink: 0;
   position: relative;
   overflow: visible;
 }
+
 .extended-fab-dark {
-  background: linear-gradient(
-      to left,
+  background: linear-gradient(to left,
       rgba(208, 188, 255, 0.11),
-      rgba(208, 188, 255, 0.11)
-    ),
+      rgba(208, 188, 255, 0.11)),
     linear-gradient(to left, #5200ff, #5200ff);
   border-radius: 16px;
   display: flex;
@@ -229,13 +229,12 @@
   position: absolute;
   left: 915px;
   top: 665px;
-  box-shadow: var(
-    --m3-elevationdark-3-box-shadow,
-    0px 1px 3px 0px rgba(0, 0, 0, 0.3),
-    0px 4px 8px 3px rgba(0, 0, 0, 0.15)
-  );
+  box-shadow: var(--m3-elevationdark-3-box-shadow,
+      0px 1px 3px 0px rgba(0, 0, 0, 0.3),
+      0px 4px 8px 3px rgba(0, 0, 0, 0.15));
   overflow: hidden;
 }
+
 .state-layer3 {
   padding: 16px 20px 16px 16px;
   display: flex;
@@ -246,6 +245,7 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .label-text {
   color: var(--m3-sys-dark-primary, #d0bcff);
   text-align: center;
@@ -255,6 +255,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .selecciona-fecha-de-reserva- {
   color: #000000;
   text-align: left;
@@ -265,6 +266,7 @@
   width: 289px;
   height: 16px;
 }
+
 .gesti-n-de-reservas {
   color: #000000;
   text-align: center;
