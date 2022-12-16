@@ -1,5 +1,4 @@
 <template>
-    
     <v-container>
         <pre>{{ search }}</pre>
         <pre>{{ results }}</pre>
@@ -37,6 +36,7 @@
                 :count="results.indexOf(result)" />
         </v-row>
     </v-container>
+
 </template>
 <script>
 import API from '../services/api'

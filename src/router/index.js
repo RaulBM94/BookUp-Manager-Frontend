@@ -15,6 +15,7 @@ import PaymentView from '@/views/PaymentView.vue'
 import Success from '../views/SuccessPage.vue'
 import ErrorPage from '../views/ErrorPage.vue'
 
+import ProfileView from '@/views/ProfileView.vue'
 
 
 Vue.use(VueRouter)
@@ -86,6 +87,11 @@ const routes = [
     path:'/payment',
     name:PaymentView,
     component:PaymentView
+  },
+  {
+    path:'/profile',
+    name:'profile',
+    component: ProfileView
   }
   
 ]

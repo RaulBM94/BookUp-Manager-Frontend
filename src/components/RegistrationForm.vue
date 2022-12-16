@@ -15,34 +15,38 @@
         fill="#6D27C9"
       />
     </svg>
-    <form>
+    <v-form v-model="valid" ref="form" lazy-validation>
       <section v-if="step === 1">
-        <v-card class="mx-auto my-12" max-width="360">
+        <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
           <v-card-title>Paso 1: Regístrate como usuario</v-card-title>
           <v-card-text>
-            <v-row allign="center" class="colour mx-0 mb-3">
-              <v-text-field label="Nombre" hide-details="auto" filled v-model="newUser.name"></v-text-field>
+            <v-row align="center" class="colour mx-0 mb-3">
+              <v-text-field label="Nombre" hide-details="auto" filled v-model="newUser.name" :rules="[rules.required]"></v-text-field>
             </v-row>
-            <v-row allign="center" class="colour mx-0 mb-3">
-              <v-text-field label="Apellido" hide-details="auto" filled v-model="newUser.surname"></v-text-field>
+            <v-row align="center" class="colour mx-0 mb-3">
+              <v-text-field label="Apellido" hide-details="auto" filled v-model="newUser.surname" :rules="[rules.required]"></v-text-field>
             </v-row>
-            <v-row allign="center" class="colour mx-0 mb-3">
-              <v-text-field label="Telefono" hide-details="auto" filled v-model="newUser.phone"></v-text-field>
+            <v-row align="center" class="colour mx-0 mb-3">
+              <v-text-field label="Teléfono" hide-details="auto" filled v-model="newUser.phone" type="number" hide-spin-buttons :rules="[rules.required, rules.phone]"></v-text-field>
             </v-row>
-            <v-row allign="center" class="mx-0 mb-3 colour">
-              <v-text-field label="Email" hide-details="auto" filled v-model="newUser.email"></v-text-field>
+            <v-row align="center" class="mx-0 mb-3 colour">
+              <v-text-field label="Email" hide-details="auto" filled v-model="newUser.email" type="email" :rules="[rules.required, rules.email]"></v-text-field>
             </v-row>
-            <v-row allign="center" class="mx-0 mb-3 colour">
-              <v-text-field label="Contraseña" :type="visible ? 'text' : 'password'" hide-details="auto"
-                class="form-control mb-1"
-                v-bind:class="{ 'is-invalid': !passwordValidOrEmpty, 'is-valid': passwordValid }"
-                v-model="newUser.password" filled></v-text-field>
+            <v-row align="center" class="mx-0 mb-3 colour">
+              <v-text-field label="Contraseña" :type="visible1 ? 'text' : 'password'" hide-details="auto"
+                class="form-control mb-1"  hint="Mínimo 5 caracteres"
+                :append-icon="visible1 ? 'mdi-eye' : 'mdi-eye-off'" @click:append="visible1 = !visible1"
+                v-model="newUser.password" filled
+                :rules="[rules.required]"
+                ></v-text-field>
             </v-row>
-            <v-row allign="center" class="mx-0 colour mb-3">
-              <v-text-field label="Confirmar Contraseña" :type="visible ? 'text' : 'password'" hide-details="auto"
+            <v-row align="center" class="mx-0 colour mb-3">
+              <v-text-field label="Confirmar Contraseña" :type="visible2 ? 'text' : 'password'" hide-details="auto"
                 filled class="form-control mb-1"
-                v-bind:class="{ 'is-invalid': !passwordsEqualOrEmpty, 'is-valid': passwordsEqualNotEmpty }"
-                v-model="password2"></v-text-field>
+                :append-icon="visible2 ? 'mdi-eye' : 'mdi-eye-off'" @click:append="visible2 = !visible2"
+                v-model="password2"
+                :rules="[rules.pwdCheck]"
+                ></v-text-field>
             </v-row>
             <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
               <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
@@ -69,15 +73,15 @@
         <v-card class="mx-auto my-12" max-width="360">
           <v-card-title>Paso 2: Registra tu establecimiento</v-card-title>
           <v-card-text>
-            <v-row allign="center" class="colour mx-0 mb-3">
+            <v-row align="center" class="colour mx-0 mb-3">
               <v-text-field label="Nombre del establecimiento" hide-details="auto" filled
-                v-model="restaurant.name"></v-text-field>
+                v-model="restaurant.name" :rules="[rules.required]"></v-text-field>
             </v-row>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-            <v-row allign="center" class="colour mx-0 mt-3 mb-3">
+            <v-row align="center" class="colour mx-0 mt-3 mb-3">
               <v-text-field label="Dirección del establecimiento" hide-details="auto" filled
-                v-model="restaurant.direction"></v-text-field>
+                v-model="restaurant.direction" :rules="[rules.required]"></v-text-field>
             </v-row>
 
             <v-row allign="center" class="mx-0 mb-3" justify="center">
@@ -173,7 +177,8 @@
         </v-card>
       
       </section>
-    </form>
+    
+    </v-form>
   </div>
 </template>
 
@@ -184,7 +189,17 @@ export default {
   data() {
     return {
       step: 1,
-      totalSteps: 3,
+      totalSteps: 2,
+      rules:{
+      required: v => !!v || 'Este campo es requerido',
+      email: value => {
+      const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(value) || 'El email no es válido'
+        },
+      pwdCheck: v => v === this.newUser.password || 'Las contraseñas han de coincidir',
+      phone: v => v.length === 9 || 'Introduce un número de teléfono válido'
+      }
+      ,
       restaurant: {
         name: "",
         direction: "",
@@ -201,49 +216,28 @@ export default {
         password: ""
       },
       password2: "",
-      visible: false,
+      visible1: false,
+      visible2: false,
       authStore: useAuthStore(),
       restStore: useRestaurantStore()
     }
-  },
-  computed: {
-    emailValid: function () {
-      const regExp = /^(\w+)@(\w+)\.(\w\w+)$/;
-      return regExp.test(String(this.newUser.email).toLowerCase());
-    },
-    emailValidOrEmpty: function () {
-      return this.emailValid || this.newUser.email.length === 0;
-    },
-    passwordValid: function () {
-      return this.newUser.password.length >= 5;
-    },
-    passwordValidOrEmpty: function () {
-      return this.passwordValid || this.newUser.password.length === 0;
-    },
-    passwordsEqual: function () {
-      return this.newUser.password === this.password2;
-    },
-    passwordsEqualOrEmpty: function () {
-      return this.passwordsEqual || this.password2.length === 0;
-    },
-    passwordsEqualNotEmpty: function () {
-      return this.passwordsEqual && this.password2.length !== 0;
-    },
   },
   methods: {
     prevStep: function () {
       this.step--;
     },
     nextStep: function () {
-      this.step++;
+      this.$refs.form.validate()
+      if (this.valid===true && Object.values(this.newUser).length === 0){
+        this.step++;
+      }
     },
     toggleForm() {
       this.$emit("toggleForm")
     },
     async done() {
       if (
-        this.emailValid &&
-        this.passwordValid
+        this.valid===true
       ) {
         const response = await API.signup(this.newUser)
         localStorage.setItem('token_value',response.token_value)
