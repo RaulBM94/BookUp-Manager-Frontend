@@ -62,7 +62,7 @@
                 v-model="restaurant.direction"></v-text-field>
             </v-row>
 
-            <v-row align="center" class="mx-0 mb-3" justify="center">
+            <v-row allign="center" class="mx-0 mb-3" justify="center">
               <v-col fluid>
                 <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"></v-checkbox>
                 <v-checkbox v-model="restaurant.has_lunch" label="Incluye horario de almuerzo"></v-checkbox>
@@ -100,6 +100,16 @@
         <v-card class="mx-auto my-12" max-width="360">
           <v-card-title>Paso 3: Pago</v-card-title>
           <v-card-text>
+            <stripe-checkout
+            ref="checkoutRef" 
+            mode="payment"
+            :pk="publishableKey"
+            :line-items="lineItems"
+            :success-url="succesURL"
+            :cancel-url="cancelURL"
+            @loading="v =>loading = v"
+            />
+            <button @click="submit">Pay now</button> 
             <v-row allign="center" class="colour mx-0 mb-3">
               <v-text-field label="Nombre del establecimiento" hide-details="auto" filled
                 v-model="restaurant.name"></v-text-field>
@@ -110,21 +120,7 @@
               <v-text-field label="Dirección del establecimiento" hide-details="auto" filled
                 v-model="restaurant.direction"></v-text-field>
             </v-row>
-
-            <!-- <h1> Stripe Payment Gateway Integration</h1>
-        <stripe-checkout
-       ref="checkoutRef" 
-       mode="payment"
-       :pk="publishableKey"
-       :line-items="lineItems"
-       :success-url="succesURL"
-       :cancel-url="cancelURL"
-       @loading="v =>loading = v"
-       
-        />
-        <button @click="submit">Pay now</button> -->
-
-            <v-row align="center" class="mx-0 mb-3" justify="center">
+            <v-row allign="center" class="mx-0 mb-3" justify="center">
               <v-col fluid>
                 <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"></v-checkbox>
                 <v-checkbox v-model="restaurant.has_lunch" label="Incluye horario de almuerzo"></v-checkbox>
