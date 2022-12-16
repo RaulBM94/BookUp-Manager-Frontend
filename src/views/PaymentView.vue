@@ -1,9 +1,10 @@
 <template>
     <div>
         <h1>Stripe Payment Gateway Integration</h1>
-        <stripe-checkout ref="checkoutRef" mode="payment" :pk="publishableKey" :line-items="lineItems"
+        <stripe-checkout ref="checkoutRef" mode="subscription" :pk="publishableKey" :line-items="lineItems"
             :success-url="succesURL" :cancel-url="cancelURL" @loading="v => loading = v" />
-        <v-btn @click="submit">Pay now</v-btn>
+        <v-btn @click="submit">Paquete Básico</v-btn>
+        <v-btn @click="submit2">Paquete Premium</v-btn>
     </div>
 </template>
 
@@ -21,6 +22,14 @@ export default {
                 {
                     price: 'price_1MFe7OEG3SIgnXgsiolkDPOx',
                     quantity: 1
+                },
+                {
+                    price:'price_1MFhRoEG3SIgnXgsdusFME6Q',
+                    quantity:1
+                },
+                {
+                    price:'price_1MFhVZEG3SIgnXgsgLMUH9iN',
+                    quantity:1
                 }
             ],
             successURL: 'http://localhost:8080/success',
