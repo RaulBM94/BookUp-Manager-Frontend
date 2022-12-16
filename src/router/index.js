@@ -11,6 +11,7 @@ import ReservationPage from '@/views/ReservationPage.vue'
 // import ReservationSearch from '@/views/ReservationSearch.vue'
 import ReservationSend from '@/views/ReservationSend.vue'
 import ReservationSearch2 from '@/views/ReservationSearch2.vue'
+import ProfileView from '@/views/ProfileView.vue'
 
 
 Vue.use(VueRouter)
@@ -68,6 +69,11 @@ const routes = [
     name:'reservation-send',
     component:ReservationSend
   },
+  {
+    path:'/profile',
+    name:'profile',
+    component: ProfileView
+  }
   
 ]
 
