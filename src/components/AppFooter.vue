@@ -1,5 +1,5 @@
 <template>
-      <v-footer padless absolute mb-0 position="fixed">
+      <v-footer app padless absolute mb-0 position="fixed">
         <v-card
           flat
           tile
