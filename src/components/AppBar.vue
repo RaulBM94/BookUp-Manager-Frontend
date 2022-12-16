@@ -6,7 +6,7 @@
                     <v-btn icon v-bind="attrs" v-on="on">
                         <v-icon>mdi-menu</v-icon>
                     </v-btn>
-                </template>            
+                </template>
                 <v-list>
                     <v-list-item-group active-class="deep-purple--text text--accent-4">
                         <v-list-item :to="{ name: 'home' }">
@@ -74,7 +74,7 @@
 
                 <v-list nav>
                     <v-list-item-group active-class="deep-purple--text text--accent-4"></v-list-item-group>
-                    <v-list-item link @click="go('home')" >
+                    <v-list-item link @click="go('home')">
                         <v-list-item-title> Home</v-list-item-title>
                     </v-list-item>
                     <v-list-item :to="{ name: 'personal' }">
@@ -84,8 +84,8 @@
                         <v-list-item-title>Perfil</v-list-item-title>
                     </v-list-item>
                     <v-list-item :to="{ name: 'reservation-home' }">
-                        <v-list-item-title >Gestionar
-                                Reservas</v-list-item-title>
+                        <v-list-item-title>Gestionar
+                            Reservas</v-list-item-title>
                     </v-list-item>
 
                     <v-list-item>
@@ -122,7 +122,7 @@ export default {
                 name: 'home'
             })
         },
-        go(name){
+        go(name) {
             this.$router.push({
                 name: name
             })

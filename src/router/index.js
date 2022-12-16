@@ -8,8 +8,9 @@ import PersonalView from '../views/PersonalView.vue'
 import ReservationView from '../views/ReservationView.vue'
 import AcceptReservation from '../views/AcceptReservation.vue'
 import ReservationPage from '@/views/ReservationPage.vue'
-import ReservationSearch from '@/views/ReservationSearch.vue'
+// import ReservationSearch from '@/views/ReservationSearch.vue'
 import ReservationSend from '@/views/ReservationSend.vue'
+import ReservationSearch2 from '@/views/ReservationSearch2.vue'
 
 
 
@@ -61,7 +62,7 @@ const routes = [
   {
     path:'/reservation/search',
     name:'reservation-search',
-    component:ReservationSearch
+    component:ReservationSearch2
   },
   {
     path:'/reservation/send',

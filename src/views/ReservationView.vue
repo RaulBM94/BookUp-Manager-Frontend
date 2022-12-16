@@ -79,8 +79,6 @@ export default {
         return {
             menu: false,
             modal: false,
-            text: "Reserva creada con éxito",
-            text2: "Se ha producido un error al crear la reserva",
             reservation: {
                 shift: "",
                 hour: "",

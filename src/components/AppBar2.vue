@@ -1,19 +1,16 @@
 <template>
   <header>
-    <v-toolbar app color="deep-purple accent-4">
+    <v-app-bar app color="deep-purple accent-4">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-tittle class="white--text">BookUp Manager</v-toolbar-tittle>
+      <v-app-bar-title class="white--text">BookUp Manager</v-app-bar-title>
       <v-spacer></v-spacer>
-    </v-toolbar>
+    </v-app-bar>
     <v-navigation-drawer app v-if="!authStore.isLoggedIn" v-model="drawer" temporary dark>
       <v-layout mt-4 column align-center>
         <v-flex>
           <v-avatar>
             <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="">
           </v-avatar>
-        </v-flex>
-        <v-flex>
-          <p class="white--text mt-3 headline">Carmensita</p>
         </v-flex>
         <v-flex>
           <v-list>
@@ -80,9 +77,8 @@
         </v-flex>
         <v-flex>
 
-          <p class="white--text mt-3 headline">{{this.authStore.get}}</p>
-=======
-          <p class="white--text mt-3 headline">{{name}}</p>
+          <p class="white--text mt-3 headline">{{authStore.userName}}</p>
+          <!-- <p class="white--text mt-3 headline">{{name}}</p> -->
 
         </v-flex>
         <v-flex>
@@ -138,13 +134,9 @@ export default {
         name: 'home'
       })
     }
-  },
-  beforeCreate:{
-    getName(){
-      this.name=this.authStore.getName()
-    }
   }
-}
+  }
+
 
 
 

@@ -17,6 +17,7 @@ export const useAuthStore = defineStore('auth', {
       return this.token
     },
     userName(){
+      console.log(this.name)
       return this.name
     }
   },
@@ -24,12 +25,11 @@ export const useAuthStore = defineStore('auth', {
     logout() {
       this.token = null
       this.email = null
+      this.name = null
     },
-    login(token, email) {
+    login(token, email, name) {
       this.token = token
       this.email = email
-    },
-    setName(name){
       this.name = name
     }
   },
