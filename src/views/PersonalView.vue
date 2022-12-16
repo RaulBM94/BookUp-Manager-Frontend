@@ -4,7 +4,7 @@
     <v-row class="mx-0 my-12" justify="center">
       <v-hover>
         <template v-slot:default="{ hover }">
-          <v-btn :elevation="hover ? 24 : 6" class="mx-auto pa-6" width="360">
+          <v-btn :elevation="hover ? 24 : 6" class="mx-auto pa-6" width="360" to="/profile">
             <v-icon width="25" height="25" viewBox="0 0 80 80" color="rgb(103, 80, 164)">
               mdi-account-circle
             </v-icon>

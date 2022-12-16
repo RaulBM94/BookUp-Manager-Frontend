@@ -1,7 +1,20 @@
 <template>
   <div>
+    <v-alert
+    :value="alert"
+      border="top"
+      color=purple
+      colored-border
+      type="info"
+      elevation="2"
+      class="ml-2"
+      width="80vw"
+      transition="slide-x-transition"
+    >
+      No hay reservas para ese día
+    </v-alert>
     <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
-      <v-card-title>Crear Reserva</v-card-title>
+      <v-card-title>Buscar Reserva</v-card-title>
       <v-card-text>
         <v-row class="mx-0 mb-3 rounded colour">
           <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="search.date"
@@ -60,6 +73,7 @@ export default {
       },
       results: "",
       visible: false,
+      alert: false,
       date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       restStore: useRestaurantStore(),
     }
@@ -71,8 +85,16 @@ export default {
       if (response.error) {
         this.correct = false
       } else {
-        this.results = response
+        if(response.length===0){
+          this.alert = alert
+          window.setInterval(() => {
+        this.alert = false;
+      }, 5000) 
+        }else{
+          this.results = response
         this.visible = true
+        }
+        
       }
 
     },

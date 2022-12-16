@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-alert class="alert" position="absolute t-0"  v-if="correct === true" type="success" dismissible elevation="2">
+        <v-alert class="alert"  width="80vw" v-if="correct === true" type="success" dismissible elevation="2" transition="slide-x-transition">
             Reserva creada con éxito
         </v-alert>
         <v-alert class="alert" position="absolute t-0" v-if="correct === false" type="error" dismissible elevation="2">
@@ -143,7 +143,7 @@ export default {
   position: fixed;
   top:50px;
   left:0;
-  width:100%;
+  width:98vw;
   z-index:2;
 }
 </style>
