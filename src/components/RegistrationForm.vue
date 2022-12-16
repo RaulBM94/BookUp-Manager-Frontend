@@ -96,6 +96,69 @@
           </v-card-actions>
         </v-card>
       </section>
+      <section v-if="step === 3">
+        <v-card class="mx-auto my-12" max-width="360">
+          <v-card-title>Paso 3: Pago</v-card-title>
+          <v-card-text>
+            <v-row allign="center" class="colour mx-0 mb-3">
+              <v-text-field label="Nombre del establecimiento" hide-details="auto" filled
+                v-model="restaurant.name"></v-text-field>
+            </v-row>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-row allign="center" class="colour mx-0 mt-3 mb-3">
+              <v-text-field label="Dirección del establecimiento" hide-details="auto" filled
+                v-model="restaurant.direction"></v-text-field>
+            </v-row>
+
+            <!-- <h1> Stripe Payment Gateway Integration</h1>
+        <stripe-checkout
+       ref="checkoutRef" 
+       mode="payment"
+       :pk="publishableKey"
+       :line-items="lineItems"
+       :success-url="succesURL"
+       :cancel-url="cancelURL"
+       @loading="v =>loading = v"
+       
+        />
+        <button @click="submit">Pay now</button> -->
+
+            <v-row align="center" class="mx-0 mb-3" justify="center">
+              <v-col fluid>
+                <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"></v-checkbox>
+                <v-checkbox v-model="restaurant.has_lunch" label="Incluye horario de almuerzo"></v-checkbox>
+                <v-checkbox v-model="restaurant.has_dinner" label="Incluye horario de cena"></v-checkbox>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col>
+                <v-slider min="1" max="50" v-model="restaurant.num_tables" label="Número de mesas" thumb-color="purple"
+                  thumb-label="always"></v-slider>
+              </v-col>
+            </v-row>
+
+            <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
+              <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
+                ANTERIOR
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn dark large color="deep-purple" @click.prevent="done" elevation="2">
+                FINALIZAR
+              </v-btn>
+            </v-row>
+            <v-row justify="center" class="mx-0 mt-3">
+              <v-btn v-if="step != totalSteps" dark large color="deep-purple" @click.prevent="nextStep" elevation="2">
+                SIGUIENTE
+              </v-btn>
+            </v-row>
+          </v-card-text>
+          <v-card-actions>
+          </v-card-actions>
+        </v-card>
+      
+      </section>
     </form>
   </div>
 </template>
@@ -107,7 +170,7 @@ export default {
   data() {
     return {
       step: 1,
-      totalSteps: 2,
+      totalSteps: 3,
       restaurant: {
         name: "",
         direction: "",

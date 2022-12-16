@@ -12,6 +12,7 @@ import ReservationSearch from '@/views/ReservationSearch.vue'
 import ReservationSend from '@/views/ReservationSend.vue'
 
 
+
 Vue.use(VueRouter)
 
 const routes = [

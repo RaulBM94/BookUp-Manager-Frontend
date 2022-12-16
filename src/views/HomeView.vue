@@ -4,6 +4,18 @@
 
     <v-btn class="extended-fab-dark" aling-center>
       <div class="state-layer">
+        <h1> Stripe Payment Gateway Integration</h1>
+        <stripe-checkout
+       ref="checkoutRef" 
+       mode="payment"
+       :pk="publishableKey"
+       :line-items="lineItems"
+       :success-url="succesURL"
+       :cancel-url="cancelURL"
+       @loading="v =>loading = v"
+       
+        />
+        <button @click="submit">Pay now</button>
         <div class="label-text ">EMPIEZA YA</div>
       </div>
     </v-btn>
@@ -112,6 +124,7 @@
 </template>
 
 <script>
+import{stripeCheckout} from '@vue-stripe/vue-stripe'
 import {
 
 } from 'vuetify/lib';
@@ -119,7 +132,27 @@ import {
 export default {
   name: 'HomeView',
   components: {
+  stripeCheckout
   },
+  data(){
+    this.publishableKey = ""// obtener publishableKey de Stripe
+    return{
+      loading: false,
+      lineItems:[
+        {
+          price:'', //obtener de stripe
+          quantity:1
+        }
+      ],
+      succesURL:'http://localhost:8080/success',
+      cancelURL:'http://localhost:8080/error'
+    }
+  },
+  methods:{
+    submit(){
+      this.$refs.checkoutRef.redirectToCheckOut()
+    }
+  }
 };
 </script>
 
