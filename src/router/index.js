@@ -10,6 +10,8 @@ import ReservationPage from '@/views/ReservationPage.vue'
 import ReservationSend from '@/views/ReservationSend.vue'
 import ReservationSearch2 from '@/views/ReservationSearch2.vue'
 import PaymentView from '@/views/PaymentView.vue'
+import PaymentPremium from '@/views/PaymentPremium.vue'
+import PaymentPremiumPlus from '@/views/PaymentPremiumPlus.vue'
 import Success from '../views/SuccessPage.vue'
 import ErrorPage from '../views/ErrorPage.vue'
 
@@ -79,6 +81,16 @@ const routes = [
     path:'/payment',
     name:PaymentView,
     component:PaymentView
+  },
+  {
+    path:'/paymentpremium',
+    name:PaymentPremium,
+    component:PaymentPremium
+  },
+  {
+    path:'/paymentpremiumplus',
+    name:PaymentPremiumPlus,
+    component:PaymentPremiumPlus
   },
   {
     path:'/profile',
