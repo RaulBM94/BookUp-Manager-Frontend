@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="vector">
 <LogIn v-if="isLogged" @toggleForm="toggleForm"/>
 <RegistrationForm v-else @toggleForm="toggleForm"/>
    </div>
@@ -26,6 +26,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.vector {
+  background-image: url(../assets/decoration.svg);
+}
 </style>

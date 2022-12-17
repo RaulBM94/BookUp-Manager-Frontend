@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="wrapper" max-height="360px" min-width="400px">
-      <div class="container text-center">
+    <div class="wrapper">
+      <div class="contenedor text-center">
         <div class="logo">
-          Aqui va el logo
+          <v-img class="img" src="@/assets/images/logo.png"/>
         </div>
         <div class="title text-sm-h4 text-md-h3 text-xs-h5 font-weight-black"> Tu app de gestión de reservas para tu
           restaurante.</div>
         <div class="subtitle text-sm-h6 text-md-h5 font-weight-medium"> ¡Controla tú mismo las reservas fácilmente y
           olvídate de los No Show!</div>
-        <v-btn elevation="6">Empieza ya</v-btn>
-      </div>
+        </div>
+        <v-btn elevation="6" class="mx-auto">Empieza ya</v-btn>
     </div>
     <div class="container-img">
 
@@ -23,12 +23,12 @@
         <v-row no-gutters>
           <v-col>
             <v-card class="pa-2" outlined tile>
-             <v-card-title>Gestionar tus reservas de manera fácil y cómoda</v-card-title> 
+              <v-card-title>Gestionar tus reservas de manera fácil y cómoda</v-card-title>
             </v-card>
           </v-col>
           <v-col>
             <v-card class="pa-2" outlined tile>
-              Poder 
+              Poder
             </v-card>
           </v-col>
           <v-col>
@@ -62,22 +62,38 @@ export default {
 .wrapper {
   background: rgb(123, 66, 244);
   background: linear-gradient(93deg, rgba(123, 66, 244, 1) 0%, rgba(206, 89, 246, 1) 100%);
-  border-bottom-right-radius: 200px;
+  border-bottom-right-radius: 100px;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-.container {
-  height: 20rem;
+.logo {
+  margin-top: 2rem;
+}
+.img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .wrapper {
+    border-bottom-right-radius: 200px;
+  }
+  .img {
+    max-width: 400px;
+  }
+}
+.contenedor {
   width: 80%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-
+  padding-bottom: 2rem;
 }
 
-.logo {
-  margin-top: 2rem;
-}
 
 .title {
   font-size: 100px;
@@ -107,4 +123,5 @@ export default {
   font-size: 40px;
   margin-bottom: 20px;
 }
+
 </style>

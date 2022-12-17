@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <AppBar2 />
     <v-main>
-      <router-view/>
+      <AppBar2 />
+      <router-view class="view"/>
+      <AppFooter />
     </v-main>
-    <AppFooter />
   </v-app>
 </template>
 
@@ -21,4 +21,8 @@ export default {
 };
 </script>
 
-
+<style scoped>
+.view {
+  margin-bottom: 163px;
+}
+</style>
