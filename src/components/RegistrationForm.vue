@@ -219,7 +219,8 @@ export default {
       visible1: false,
       visible2: false,
       authStore: useAuthStore(),
-      restStore: useRestaurantStore()
+      restStore: useRestaurantStore(),
+      valid:true
     }
   },
   methods: {

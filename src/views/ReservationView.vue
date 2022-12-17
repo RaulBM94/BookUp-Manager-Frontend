@@ -6,23 +6,23 @@
                 d="M0 171.111L40.4375 192.5C80.875 213.889 161.75 256.667 242.625 242.407C323.5 228.148 404.375 156.852 485.25 149.722C566.125 142.593 647 199.63 727.875 242.407C808.75 285.185 889.625 313.704 970.5 292.315C1051.37 270.926 1132.25 199.63 1213.12 199.63C1294 199.63 1374.87 270.926 1455.75 278.056C1536.62 285.185 1617.5 228.148 1698.37 171.111C1779.25 114.074 1860.12 57.037 1900.56 28.5185L1941 0V385H1900.56C1860.12 385 1779.25 385 1698.37 385C1617.5 385 1536.62 385 1455.75 385C1374.87 385 1294 385 1213.12 385C1132.25 385 1051.37 385 970.5 385C889.625 385 808.75 385 727.875 385C647 385 566.125 385 485.25 385C404.375 385 323.5 385 242.625 385C161.75 385 80.875 385 40.4375 385H0V171.111Z"
                 fill="#6D27C9" />
         </svg>
-        
 
-            <v-alert class="alert" width="80vw" v-if="correct === true" type="success" dismissible elevation="2"
-                transition="slide-x-transition">
 
-                Reserva creada con éxito
-            </v-alert>
-            <v-alert class="alert" position="absolute t-0" v-if="correct === false" type="error" dismissible
-                elevation="2">
-                Se ha producido un error al crear la reserva
-            </v-alert>
+        <v-alert type="success" width="40vw" :value="alert1" transition="slide-x-transition" class="alert" border="top"
+            colored-border color="green">
+            La reserva ha sido creada correctamente
+        </v-alert>
+        <v-alert type="error" width="40vw" :value="alert2" transition="slide-x-transition" class="alert" border="top"
+            colored-border color="red)">
+            Se ha producido un error al creal la reserva
+        </v-alert>
+        <v-form v-model="valid" ref="form" lazy-validation>
             <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
                 <v-card-title>Crear Reserva</v-card-title>
                 <v-card-text>
                     <v-row class="mx-0 mb-3 rounded colour">
                         <v-menu ref="menu" v-model="menu" :close-on-content-click="false"
-                            :return-value.sync="reservation.date" transition="scale-transition" offset-y
+                            :return-value.sync="date" transition="scale-transition" offset-y
                             min-width="auto">
                             <template v-slot:activator="{ on, attrs }">
                                 <v-text-field label="Seleccionar fecha" readonly v-bind="attrs" v-on="on" v-model="date"
@@ -41,29 +41,30 @@
                     </v-row>
                     <v-row class="mx-0 mb-3 rounded">
                         <v-select class="colour" hide-details="auto" filled label="Turno" v-model="reservation.shift"
-                            :items="getShift">
+                            :items="getShift" :rules="[rules.required]">
                         </v-select>
                     </v-row>
 
                     <v-row class="mx-0 mb-3 rounded colour">
-                        <v-text-field label="Hora de reserva" hide-details="auto" filled
-                            v-model="reservation.hour"></v-text-field>
+                        <v-text-field label="Hora de reserva" hide-details="auto" filled v-model="reservation.hour"
+                            :rules="[rules.required]" placeholder="00:00"></v-text-field>
                     </v-row>
                     <v-row class="mx-0 mb-3 rounded colour">
-                        <v-text-field label="Nombre" hide-details="auto" filled
-                            v-model="reservation.customer_name"></v-text-field>
+                        <v-text-field label="A nombre de" hide-details="auto" filled v-model="reservation.customer_name"
+                            :rules="[rules.required]"></v-text-field>
                     </v-row>
                     <v-row class="mx-0 mb-3 rounded colour">
-                        <v-text-field label="Teléfono" hide-details="auto" filled
-                            v-model="reservation.customer_phone"></v-text-field>
+                        <v-text-field label="Teléfono" hide-details="auto" filled v-model="reservation.customer_phone"
+                            :rules="[rules.required, rules.phone]" type="number" hide-spin-buttons></v-text-field>
                     </v-row>
                     <v-row class="mx-0 mb-3 rounded colour">
-                        <v-text-field label="Email" hide-details="auto" filled v-model="reservation.customer_email">
-                            v-model="user.email"></v-text-field>
+                        <v-text-field label="Email" hide-details="auto" filled v-model="reservation.customer_email"
+                            :rules="[rules.required, rules.email]" type="email"></v-text-field>
                     </v-row>
                     <v-row class="mx-0 mb-3 rounded colour">
                         <v-text-field v-model="reservation.people" type="number" label="Personas" min="1" max="10"
-                            hide-details="auto" filled></v-text-field>
+                            hint="Máximo de 10 personas" hide-details="auto" filled
+                            :rules="[rules.minimum]"></v-text-field>
                     </v-row>
                     <v-row class="mx-0 mb-3 rounded colour">
                         <v-textarea filled label="Notas" v-model="reservation.notes" hide-details="auto"></v-textarea>
@@ -81,7 +82,7 @@
                     </v-row>
                 </v-card-actions>
             </v-card>
-        
+        </v-form>
     </div>
 </template>
 
@@ -104,26 +105,42 @@ export default {
             },
             date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             restStore: useRestaurantStore(),
-            correct: ""
+            rules: {
+                required: v => !!v || 'Este campo es requerido',
+                minimum: v => !!v || 'El mínimo de personas ha de ser 1',
+                email: v => {
+                    const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    return pattern.test(v) || 'El email no es válido'
+                },
+                phone: v => v.length === 9 || 'Introduce un número de teléfono válido'
+            },
+            alert1: false,
+            alert2: false,
+            valid: false
         }
     },
     methods: {
         async add() {
-            this.reservation.date = this.date
-            const response = await API.createReservation(this.reservation)
-            if (response.error) {
-                this.correct = false
-            } else {
-                this.correct = true
-                this.reservation.shift = ""
-                this.reservation.hour = ""
-                this.reservation.customer_name = ""
-                this.reservation.customer_phone = ""
-                this.reservation.customer_email = ""
-                this.reservation.people = 1
-                this.reservation.notes = ""
-
-                this.date = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
+            if (this.$refs.form.validate()) {
+                this.valid = true
+                this.reservation.date = this.date
+                if (this.valid === true) {
+                    const response = await API.createReservation(this.reservation)
+                    if (response.error) {
+                        this.alert2 = alert
+                        window.setInterval(() => {
+                            this.alert2 = false;
+                        }, 2000)
+                    } else {
+                        this.alert1 = alert
+                        window.setInterval(() => {
+                            this.alert1 = false;
+                        }, 2000)
+                        this.$refs.form.resetValidation()
+                        this.date = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
+                        
+                    }
+                }
             }
         },
         async back() {
@@ -156,9 +173,8 @@ export default {
 
 .alert {
     position: fixed;
-    top: 50px;
+    top: 68px;
     left: 0;
-    width: 98vw;
     z-index: 2;
 }
 

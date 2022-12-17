@@ -1,14 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import MailView from '../views/MailView.vue'
+import HomeView2 from '../views/HomeView2.vue'
 import AuthView from '../views/AuthView.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
 import ReservationView from '../views/ReservationView.vue'
 import AcceptReservation from '../views/AcceptReservation.vue'
 import ReservationPage from '@/views/ReservationPage.vue'
-// import ReservationSearch from '@/views/ReservationSearch.vue'
 import ReservationSend from '@/views/ReservationSend.vue'
 import ReservationSearch2 from '@/views/ReservationSearch2.vue'
 import PaymentView from '@/views/PaymentView.vue'
@@ -24,7 +22,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView2
   },
   {
     path: '/about',
@@ -46,12 +44,6 @@ const routes = [
     path: '/reservation',
     name: 'reservation-home',
     component: ReservationPage
-  },
-
-  {
-    path: '/mail',
-    name: 'mail',
-    component: MailView
   },
   {
     path:'/reservation/create',

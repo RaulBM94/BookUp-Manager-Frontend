@@ -145,7 +145,6 @@ export default {
   position: fixed;
   top: 50px;
   left: 0;
-  width: 100%;
   z-index: 2;
 }
 .vector2 {
