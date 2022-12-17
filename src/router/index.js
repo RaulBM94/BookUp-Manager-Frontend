@@ -88,7 +88,7 @@ const routes = [
     component:PaymentPremium
   },
   {
-    path:'/paymentpremiumplus',
+    path:'/paymentpremium-plus',
     name:PaymentPremiumPlus,
     component:PaymentPremiumPlus
   },

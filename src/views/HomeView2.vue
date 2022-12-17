@@ -3,19 +3,19 @@
     <div class="wrapper">
       <div class="contenedor text-center">
         <div class="logo">
-          <v-img class="img" src="@/assets/images/logo.png"/>
+          <v-img class="img" src="@/assets/images/logo.png" />
         </div>
         <div class="title text-sm-h4 text-md-h3 text-xs-h5 font-weight-black"> Tu app de gestión de reservas para tu
           restaurante.</div>
         <div class="subtitle text-sm-h6 text-md-h5 font-weight-medium"> ¡Controla tú mismo las reservas fácilmente y
           olvídate de los No Show!</div>
-        </div>
-        <v-btn elevation="6" class="mx-auto">Empieza ya</v-btn>
+      </div>
+      <v-btn elevation="6" class="mx-auto">Empieza ya</v-btn>
     </div>
     <div class="container-img">
 
     </div>
-
+    
 
     <v-card class="testimonial text-center mt-8">
       <div class="title-1 text-sm-h5 text-md-h4 font-weight-medium">
@@ -48,12 +48,15 @@
 <script>
 export default {
   data: () => ({
-    model: 0,
-    colors: [
-      'primary',
-      'secondary',
-      'yellow darken-2'
-    ],
+     name: 'home',
+    data() {
+        return {
+  
+        }
+    },
+    methods: {
+       
+    },
   }),
 }
 </script>
@@ -69,22 +72,27 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .logo {
   margin-top: 2rem;
 }
+
 .img {
   width: 100%;
   max-width: 200px;
   height: auto;
 }
+
 @media (min-width: 768px) {
   .wrapper {
     border-bottom-right-radius: 200px;
   }
+
   .img {
     max-width: 400px;
   }
 }
+
 .contenedor {
   width: 80%;
   display: flex;
