@@ -23,6 +23,6 @@ export default {
 
 <style scoped>
 .view {
-  margin-bottom: 163px;
+  margin-bottom: 155px;
 }
 </style>

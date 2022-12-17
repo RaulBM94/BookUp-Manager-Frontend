@@ -79,7 +79,7 @@ const routes = [
   },
   {
     path:'/payment',
-    name:PaymentView,
+    name:'payment',
     component:PaymentView
   },
   {

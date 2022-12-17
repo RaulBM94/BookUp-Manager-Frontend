@@ -1,7 +1,7 @@
 <template>
     <div>
 <h1>Payment was successful</h1>
-    <a href= "/payment">Buy Again</a>
+<router-link :to="{name: 'payment'}">Buy Again</router-link>
     </div>
 </template>
 
