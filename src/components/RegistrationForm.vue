@@ -16,6 +16,8 @@
       />
     </svg> -->
     <v-form v-model="valid" ref="form" lazy-validation>
+
+
       <section v-if="step === 1">
         <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
           <v-card-title>Paso 1: Regístrate como usuario</v-card-title>
@@ -55,11 +57,11 @@
               </v-btn>
             </v-row>
           </v-card-text>
-          <v-card-actions>
-
-          </v-card-actions>
         </v-card>
       </section>
+
+
+
       <section v-if="step === 2">
         <v-card class="mx-auto my-12" max-width="360">
           <pre>{{newUser}}</pre>
@@ -75,7 +77,6 @@
               <v-text-field label="Dirección del establecimiento" hide-details="auto" filled
                 v-model="restaurant.direction" :rules="[rules.required]"></v-text-field>
             </v-row>
-
             <v-row allign="center" class="mx-0 mb-3" justify="center">
               <v-col fluid>
                 <v-checkbox v-model="restaurant.has_breakfast" label="Incluye horario de desayuno"></v-checkbox>
@@ -83,14 +84,12 @@
                 <v-checkbox v-model="restaurant.has_dinner" label="Incluye horario de cena"></v-checkbox>
               </v-col>
             </v-row>
-
             <v-row>
               <v-col>
                 <v-slider min="1" max="50" v-model="restaurant.num_tables" label="Número de mesas" thumb-color="purple"
                   thumb-label="always"></v-slider>
               </v-col>
             </v-row>
-
             <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
               <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
                 ANTERIOR
@@ -101,28 +100,17 @@
               </v-btn>
             </v-row>
           </v-card-text>
-          <v-card-actions>
-          </v-card-actions>
         </v-card>
       </section>
+
+
+
       </v-form>
       <section v-if="step === 3">
         <v-card class="mx-auto my-12" max-width="360">
           <v-card-title>Paso 3: Selecciona el paquete</v-card-title>
           <v-card-text>
-            <stripe-checkout ref="checkoutRef" mode="payment" :pk="publishableKey" :line-items="lineItems"
-              :success-url="succesURL" :cancel-url="cancelURL" @loading="v => loading = v" />
-            <button @click="submit">Pay now</button>
-
-            <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
-              <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
-                ANTERIOR
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn dark large color="deep-purple" @click.prevent="done" elevation="2">
-                PROCEDER AL PAGO
-              </v-btn>
-            </v-row>
+            <PaymentForm />
           </v-card-text>
           <v-card-actions>
           </v-card-actions>
@@ -133,12 +121,13 @@
 </template>
 
 <script>
-import { StripeCheckout } from '@vue-stripe/vue-stripe';
+import PaymentForm from '@/components/PaymentForm.vue'
 import { useAuthStore, useRestaurantStore } from '@/stores/stores';
 import API from '../services/api'
+
 export default {
   components: {
-        StripeCheckout
+        PaymentForm
     },
   data() {
     return {
