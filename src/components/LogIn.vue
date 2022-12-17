@@ -106,8 +106,6 @@ export default {
 .colour {
   background-color: rgb(208, 188, 255)
 }
-.form {
-  height: 100vh;
-}
+
 </style>
 

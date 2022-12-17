@@ -17,10 +17,10 @@
     </div>
 
 
-    <div class="testimonial text-center">
+    <v-card class="testimonial text-center mt-8">
       <div class="title-1 text-sm-h5 text-md-h4 font-weight-medium">
         Te ofrecemos los siguientes servicios:
-        <v-row no-gutters>
+        <v-row no-gutters class="descripciones">
           <v-col>
             <v-card class="pa-2" outlined tile>
               <v-card-title>Gestionar tus reservas de manera fácil y cómoda</v-card-title>
@@ -37,7 +37,7 @@
           </v-col>
         </v-row>
       </div>
-    </div>
+    </v-card>
 
 
   </div>
@@ -109,7 +109,9 @@ export default {
   color: rgb(247, 228, 252)
 }
 
-.tetimonial {
+.testimonial {
+  margin: 0 auto;
+  width: 80%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -123,5 +125,14 @@ export default {
   font-size: 40px;
   margin-bottom: 20px;
 }
-
+.descripciones {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .descripciones {
+    flex-direction: row;
+  }
+}
 </style>
