@@ -1,6 +1,5 @@
 <template>
   <div class="text-center">
-    <h1>Stripe Payment Gateway Integration</h1>
     <stripe-checkout
       ref="basic"
       mode="subscription"
@@ -10,23 +9,29 @@
       :cancel-url="packages[0].cancelURL"
       @loading="v => loading = v"
     />
-    <v-btn class="mb-4" @click="submit">
+    <v-btn dark large color="purple" elevation="2" width="222.52px" class="mb-3" rounded @click="submit">
       {{ packages[0].type }}
     </v-btn>
 
     <stripe-checkout ref="premium" mode="subscription" :pk="packages[1].publishableKey" :line-items="packages[1].lineItem"
       :success-url="packages[1].succesURL" :cancel-url="packages[1].cancelURL" @loading="v => loading = v" />
 
-    <v-btn class="mb-4" @click="submit2">
+    <v-btn dark large color="purple" elevation="2" width="222.52px" class="mb-3" rounded @click="submit2">
       {{ packages[1].type }}
     </v-btn>
 
     <stripe-checkout ref="premiumPlus" mode="subscription" :pk="packages[2].publishableKey" :line-items="packages[2].lineItem"
       :success-url="packages[2].succesURL" :cancel-url="packages[2].cancelURL" @loading="v => loading = v" />
 
-    <v-btn class="mb-4" @click="submit3">
+    <v-btn dark large color="purple" elevation="2" width="222.52px" rounded @click="submit3">
       {{ packages[2].type }}
     </v-btn>
+    <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
+              <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
+                ANTERIOR
+              </v-btn>
+              <v-spacer></v-spacer>
+            </v-row>
 
   </div>
 </template>
@@ -51,7 +56,7 @@ export default {
             },
           ],
           successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/error'
+          cancelURL: 'http://localhost:8080/login'
         },
         {
           type: 'Paquete Premium',
@@ -63,7 +68,7 @@ export default {
             },
           ],
           successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/error'
+          cancelURL: 'http://localhost:8080/login'
         },
         {
           type: 'Paquete Premium Plus',
@@ -75,7 +80,7 @@ export default {
             },
           ],
           successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/error'
+          cancelURL: 'http://localhost:8080/login'
         }
       ]
     }
@@ -93,10 +98,6 @@ export default {
     submit3() {
       this.$refs.premiumPlus.redirectToCheckout()
     },
-    hola() {
-      const datos = this.lineItem
-      console.log(datos)
-    }
 
   }
 }

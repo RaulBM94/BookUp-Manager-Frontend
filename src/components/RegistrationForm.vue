@@ -1,23 +1,6 @@
 <template>
   <div>
-    <!-- <svg
-      class="vector"
-      width="100vw"
-      height="340"
-      viewBox="0 0 100vw 340"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M0 293.561L46.4242 300.551C91.2475 307.541 182.495 321.52 273.742 279.582C366.591 237.645 457.838 139.791 549.086 153.77C640.333 167.749 731.581 293.561 822.828 328.509C914.076 363.457 1006.92 307.541 1098.17 307.541C1189.42 307.541 1280.67 363.457 1371.91 328.509C1463.16 293.561 1554.41 167.749 1647.26 146.781C1738.5 125.812 1829.75 209.687 1874.58 251.624L1921 293.561V0H1874.58C1829.75 0 1738.5 0 1647.26 0C1554.41 0 1463.16 0 1371.91 0C1280.67 0 1189.42 0 1098.17 0C1006.92 0 914.076 0 822.828 0C731.581 0 640.333 0 549.086 0C457.838 0 366.591 0 273.742 0C182.495 0 91.2475 0 46.4242 0H0V293.561Z"
-        fill="#6D27C9"
-      />
-    </svg> -->
     <v-form v-model="valid" ref="form" lazy-validation>
-
-
       <section v-if="step === 1">
         <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
           <v-card-title>Paso 1: Regístrate como usuario</v-card-title>
@@ -42,7 +25,7 @@
               <v-text-field label="Contraseña" :type="visible1 ? 'text' : 'password'" hide-details="auto"
                 class="form-control mb-1" hint="Mínimo 5 caracteres" :append-icon="visible1 ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="visible1 = !visible1" v-model="newUser.password" filled
-                :rules="[rules.required]"></v-text-field>
+                :rules="[rules.required, rules.pwd]"></v-text-field>
             </v-row>
             <v-row align="center" class="mx-0 colour mb-3">
               <v-text-field label="Confirmar Contraseña" :type="visible2 ? 'text' : 'password'" hide-details="auto"
@@ -60,11 +43,8 @@
         </v-card>
       </section>
 
-
-
       <section v-if="step === 2">
-        <v-card class="mx-auto my-12" max-width="360">
-          <pre>{{newUser}}</pre>
+        <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
           <v-card-title>Paso 2: Registra tu establecimiento</v-card-title>
           <v-card-text>
             <v-row align="center" class="colour mx-0 mb-3">
@@ -94,7 +74,7 @@
               <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
                 ANTERIOR
               </v-btn>
-            <v-spacer></v-spacer>
+              <v-spacer></v-spacer>
               <v-btn v-if="step != totalSteps" dark large color="deep-purple" @click.prevent="nextStep" elevation="2">
                 SIGUIENTE
               </v-btn>
@@ -105,18 +85,18 @@
 
 
 
-      </v-form>
-      <section v-if="step === 3">
-        <v-card class="mx-auto my-12" max-width="360">
-          <v-card-title>Paso 3: Selecciona el paquete</v-card-title>
-          <v-card-text>
-            <PaymentForm />
-          </v-card-text>
-          <v-card-actions>
-          </v-card-actions>
-        </v-card>
+    </v-form>
+    <section v-if="step === 3">
+      <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
+        <v-card-title>Paso 3: Selecciona el paquete</v-card-title>
+        <v-card-text>
+          <PaymentForm />
+        </v-card-text>
+        <v-card-actions>
+        </v-card-actions>
+      </v-card>
 
-      </section>
+    </section>
   </div>
 </template>
 
@@ -127,12 +107,13 @@ import API from '../services/api'
 
 export default {
   components: {
-        PaymentForm
-    },
+    PaymentForm
+  },
   data() {
     return {
       step: 1,
       totalSteps: 3,
+      alert: false,
       rules: {
         required: v => !!v || 'Este campo es requerido',
         email: value => {
@@ -141,6 +122,7 @@ export default {
         },
         pwdCheck: v => v === this.newUser.password || 'Las contraseñas han de coincidir',
         phone: v => v.length === 9 || 'Introduce un número de teléfono válido',
+        pwd: v => v.length >= 5 || 'La contraseña debe tener 5 caracteres como mínimo'
         // chooseOne: v => 
         // this.restaurant.has_breakfast === true || this.restaurant.has_lunch === true || this.restaurant.has_dinner === true
       }
@@ -148,9 +130,9 @@ export default {
       restaurant: {
         name: "",
         direction: "",
-        has_breakfast: false,
-        has_dinner: false,
-        has_lunch: false,
+        has_breakfast: "",
+        has_dinner: "",
+        has_lunch: "",
         num_tables: 1
       },
       newUser: {
@@ -165,7 +147,8 @@ export default {
       visible2: false,
       authStore: useAuthStore(),
       restStore: useRestaurantStore(),
-      valid: false
+      valid: false,
+      unchecked:false
     }
   },
   methods: {
@@ -173,14 +156,34 @@ export default {
       this.step--;
     },
     nextStep: function () {
-      if (this.$refs.form.validate()) {
-        this.valid = true
-        if (this.valid === true && Object.values(this.newUser).length !== 0) {
-          this.$refs.form.resetValidation()
-          this.step++;
-          console.log("ok")
+      if (this.step === 1) {
+        if (this.$refs.form.validate()) {
+          this.valid = true
+          if (this.valid === true && Object.values(this.newUser).length !== 0) {
+            this.$refs.form.resetValidation()
+            this.step++;
+          }
         }
       }
+      if (this.step === 2) {
+        if (this.$refs.form.validate() && this.unchecked === false) {
+          if (this.restaurant.has_breakfast !== "" || this.restaurant.has_lunch !== "" || this.restaurant.has_dinner !== "") {
+            this.valid = true
+            if (this.valid === true && Object.values(this.restaurant).length !== 0) {
+              this.$refs.form.resetValidation()
+              this.step++;
+            }
+          }
+        }
+      }
+      // if (this.$refs.form.validate()) {
+      //   this.valid = true
+      //   if (this.valid === true && Object.values(this.newUser).length !== 0) {
+      //     this.$refs.form.resetValidation()
+      //     this.step++;
+      //     console.log("ok")
+      //   }
+      // }
     },
     toggleForm() {
       this.$emit("toggleForm")
@@ -209,14 +212,4 @@ export default {
 </script>
 
 <style scoped>
-.colour {
-  background-color: rgb(208, 188, 255)
-}
-
-.vector {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  overflow: hidden;
-}
 </style>

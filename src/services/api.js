@@ -78,7 +78,6 @@ async function createReservation(reservation){
 }
 
 async function searchReservation(search){
-  console.log("OK")
   try {
     const { data } = await API.get('/reservation', {
       headers: {
@@ -94,6 +93,21 @@ async function searchReservation(search){
     return err
   }
 }
+
+async function sendReminder(reminder){
+try{
+  const {data} = await API.post('/emailer',reminder, {
+    headers: {
+      token_value:localStorage.getItem('token_value')
+    }
+  })
+  return data
+}
+catch (err) {
+  return err
+}
+}
+
 export default {
   signup,
   login,
@@ -101,5 +115,6 @@ export default {
   createRestaurant,
   getRestaurant,
   createReservation,
-  searchReservation
+  searchReservation,
+  sendReminder
 }

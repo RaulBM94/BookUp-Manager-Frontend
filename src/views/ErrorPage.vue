@@ -1,6 +1,6 @@
 <template>
-    <div>
-<h1>Payment Failed</h1>
+    <div text-center>
+<h1>El pago no se ha realizado</h1>
     <router-link :to="{name: 'payment'}">Buy Again</router-link>
     </div>
 </template>

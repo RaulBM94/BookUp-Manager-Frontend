@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core' // sincroniza pinia con localStorage
-
+//AUTENTICACIÓN
 export const useAuthStore = defineStore('auth', {
   state: () => {
     return {
       token: useStorage('token_value', null),
       email: useStorage('email', null),
-      name: useStorage('name',null)
+      name: useStorage('name', null)
     }
   },
   getters: {
@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', {
     userToken() {
       return this.token
     },
-    userName(){
+    userName() {
       console.log(this.name)
       return this.name
     }
@@ -34,6 +34,7 @@ export const useAuthStore = defineStore('auth', {
     }
   },
 })
+//RESTAURANTE
 export const useRestaurantStore = defineStore('restaurant', {
   state: () => {
     return {
@@ -65,6 +66,54 @@ export const useRestaurantStore = defineStore('restaurant', {
       this.has_lunch = has_lunch
       this.has_dinner = has_dinner
       this.num_tables = num_tables
+    }
+  }
+})
+//RECORDATORIO
+export const useReminderStore = defineStore('reminder', {
+  state: () => {
+    return {
+      name: useStorage('customer_name', null),
+      email: useStorage('customer_email', null),
+      date: useStorage('date', null),
+      hour:useStorage('hour', null),
+      people: useStorage('people', null),
+    }
+  },
+  getters: {
+    getEmail() {
+      return {
+        email: this.email,
+      }
+    },
+    getName() {
+      return {
+        name: this.name,
+      }
+    },
+    getDate() {
+      return {
+        date: this.date,
+      }
+    },
+    getHour() {
+      return {
+        hour: this.hour,
+      }
+    },
+    getPeople() {
+      return {
+       people: this.people,
+      }
+    },
+  },
+  actions: {
+    setCustomerInfo(email, name, date, hour, people) {
+      this.email = email,
+      this.name = name,
+      this.date = date,
+      this.hour = hour,
+      this.people = people
     }
   }
 })
