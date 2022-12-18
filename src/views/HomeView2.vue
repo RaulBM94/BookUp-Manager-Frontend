@@ -12,34 +12,63 @@
       </div>
       <v-btn elevation="6" class="mx-auto">Empieza ya</v-btn>
     </div>
-    <div class="container-img">
 
-    </div>
-    
-
-    <v-card class="testimonial text-center mt-8">
+    <v-card class="testimonial text-center mt-8" elevation="0">
       <div class="title-1 text-sm-h5 text-md-h4 font-weight-medium">
-        Te ofrecemos los siguientes servicios:
-        <v-row no-gutters class="descripciones">
-          <v-col>
-            <v-card class="pa-2" outlined tile>
-              <v-card-title>Gestionar tus reservas de manera fácil y cómoda</v-card-title>
-            </v-card>
+        <v-row>
+          <v-col cols="6-sm-12">
+            <v-img src="@/assets/images/Control-de-gastos-en-restaurantes.jpg" class="pt-0 imagen"></v-img>
           </v-col>
-          <v-col>
-            <v-card class="pa-2" outlined tile>
-              Poder
-            </v-card>
-          </v-col>
-          <v-col>
-            <v-card class="pa-2" outlined tile>
-            </v-card>
+          <v-col cols="6-sm-12">
+            ¿Qué te ofrecemos?
+            <v-row>
+              <v-col cols="4">
+                Crear reservas fácilmente
+              </v-col>
+              <v-col cols="4">
+                Buscar reservas
+              </v-col>
+              <v-col cols="4">
+                Enviarles recordatorios a los clientes
+              </v-col>
+            </v-row>
           </v-col>
         </v-row>
-      </div>
+        </div>
     </v-card>
+    <v-card>
+      <v-row no-gutters class="testimonial">
+        <div>¿Qué se dice de nuestro servicio?</div>
+        <v-col>
+          <v-card outlined tile color="purple" class="rounded">
+            <v-card-title>
+              <div text-center>
+                “Nos hemos encontrado con un producto muy competitivo y fácil de usar. Su servicio al cliente es lo
+                mejor que he visto en mucho tiempo.”
+              </div>
 
-
+              Andrés Iniesta
+              CEO de Green Garden
+            </v-card-title>
+          </v-card>
+        </v-col>
+        <v-col>
+          <v-card outlined tile color="purple" class="rounded">
+            <v-card-title>
+              <div>
+                "Este software ha llegado para revolucionar mi restaurante."
+              </div>
+              <div>
+                Carla Stoessel
+                <div>
+                  CEO de Mi bahía Restaurant&Spa
+                </div>
+              </div>
+            </v-card-title>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-card>
   </div>
 
 
@@ -48,14 +77,14 @@
 <script>
 export default {
   data: () => ({
-     name: 'home',
+    name: 'home',
     data() {
-        return {
-  
-        }
+      return {
+
+      }
     },
     methods: {
-       
+
     },
   }),
 }
@@ -88,9 +117,18 @@ export default {
     border-bottom-right-radius: 200px;
   }
 
+  .imagen {
+    border-top-left-radius: 20px;
+  }
+
   .img {
     max-width: 400px;
   }
+}
+
+.imagen {
+  border-top-left-radius: 100px;
+
 }
 
 .contenedor {
@@ -133,13 +171,15 @@ export default {
   font-size: 40px;
   margin-bottom: 20px;
 }
-.descripciones {
+
+.testimonial {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 @media (min-width: 768px) {
-  .descripciones {
+  .testimonial {
     flex-direction: row;
   }
 }

@@ -39,7 +39,7 @@
     </div>
 
     <div class="small-fab5">
-      <div class="-34-123-456-789">+34 123 456 789</div>
+      <div class="34-123-456-789">+34 123 456 789</div>
     </div>
 
     <div class="small-fab6">
@@ -311,13 +311,6 @@ export default {
     0px 4px 8px 3px rgba(0, 0, 0, 0.15)
   );
   overflow: hidden;
-}
-.-34-123-456-789 {
-  color: #000000;
-  text-align: center;
-  font: var(--roboto14px, 400 14px "Roboto", sans-serif);
-  position: relative;
-  width: 249px;
 }
 .small-fab6 {
   background: var(

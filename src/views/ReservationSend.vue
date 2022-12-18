@@ -1,5 +1,6 @@
 <template>
     <div>
+        <pre>{{this.reminderStore.getEmail.email}}</pre>
         <svg class="vector2" width="100vw" height="385" viewBox="0 0 100vw 385" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -11,11 +12,11 @@
             <v-card-text>
                 <v-row align="center" class="mx-0 mb-3 colour">
                     <v-text-field label="Destinatario" hide-details="auto" filled type="email" :value="getReceiver"
-                        v-model="email"></v-text-field>
+                       ></v-text-field>
                 </v-row>
                 <v-row allign="center" class="mx-0 mb-3 colour">
                     <v-textarea filled label="Mensaje" auto-grow hide-details="auto" :value="setMessage"
-                        v-model="msg"></v-textarea>
+                        ></v-textarea>
                 </v-row>
             </v-card-text>
             <v-card-actions>
@@ -63,14 +64,16 @@ export default {
     },
     computed: {
         getReceiver() {
+            console.log('EMAIL')
             return `${this.reminderStore.getEmail.email}`
         },
         setMessage() {
+            console.log('MSG')
             return `Hola ${this.reminderStore.getName.name},
 
-            Te recordamos que tienes una reserva para ${this.reminderStore.getPeople.people} en nuestro restaurante ${this.restaurantStore.setRestaurantInfo.name} a las  ${this.reminderStore.getHour.hour} para la fecha ${this.reminderStore.getDate.date}.
+            Te recordamos que tienes una reserva para ${this.reminderStore.getPeople.people} personas en nuestro restaurante ${this.restaurantStore.setRestaurantInfo.restaurant_name} a las  ${this.reminderStore.getHour.hour} para la fecha ${this.reminderStore.getDate.date}.
             
-            Por favor, para confirmar tu reserva, te rogamos que accedas a este enlace:
+            Por favor, para confirmar tu reserva, te rogamos que accedas a este <a>enlace </a>
          `
         }
     }

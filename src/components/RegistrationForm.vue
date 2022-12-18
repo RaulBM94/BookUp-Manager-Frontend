@@ -48,7 +48,7 @@
           <v-card-title>Paso 2: Registra tu establecimiento</v-card-title>
           <v-card-text>
             <v-row align="center" class="colour mx-0 mb-3">
-              <v-text-field label="Nombre del establecimiento" hide-details="auto" filled v-model="restaurant.name"
+              <v-text-field label="Nombre del establecimiento" hide-details="auto" filled v-model="restaurant.restaurant_name"
                 :rules="[rules.required]"></v-text-field>
             </v-row>
             <v-spacer></v-spacer>
@@ -128,7 +128,7 @@ export default {
       }
       ,
       restaurant: {
-        name: "",
+        restaurant_name: "",
         direction: "",
         has_breakfast: "",
         has_dinner: "",
@@ -199,8 +199,8 @@ export default {
           alert('Error creating account')
           console.log(response.error)
         } else {
-          const { name, direction, has_breakfast, has_dinner, has_lunch, num_tables } = this.restaurant
-          this.restStore.setRestaurantInfo(name, direction, has_breakfast, has_dinner, has_lunch, num_tables)
+          const { restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables } = this.restaurant
+          this.restStore.setRestaurantInfo(restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables)
           this.$router.push({ name: 'personal' })
         }
       } else {

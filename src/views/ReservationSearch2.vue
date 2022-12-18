@@ -144,7 +144,7 @@ export default {
   margin-top:100px
 }
 .carta{
-  z-index:15;
+  z-index:1;
 }
 .colour {
   background-color: rgb(255, 255, 255)

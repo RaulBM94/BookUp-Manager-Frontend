@@ -9,12 +9,12 @@
       <v-layout mt-4 column align-center>
         <v-flex>
           <v-list>
-            <v-list-item-group active-class="deep-purple--text text--accent-4">
-              <v-list-item>
+            <v-list-item-group active-class="deep-purple--text">
+              <v-list-item :to="{ name: 'home' }">
                 <v-list-item-icon>
                   <v-icon>mdi-home</v-icon>
                 </v-list-item-icon>
-                <router-link :to="{ name: 'home' }">Home</router-link>
+                Home
               </v-list-item>
 
               <v-list-item>
@@ -31,11 +31,11 @@
                 <v-list-item-title>Precios</v-list-item-title>
               </v-list-item>
 
-              <v-list-item>
+              <v-list-item  :to="{ name: 'login' }">
                 <v-list-item-icon>
                   <v-icon>mdi-account</v-icon>
                 </v-list-item-icon>
-                <router-link :to="{ name: 'login' }">Área Clientes</router-link>
+                Área Clientes
               </v-list-item>
 
               <v-list-item>
@@ -63,7 +63,7 @@
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
-    <v-navigation-drawer app v-else v-model="drawer" temporary dark>
+    <v-navigation-drawer app v-else v-model="drawer" temporary light>
       <v-layout mt-4 column align-center>
         <v-flex>
           <v-avatar>

@@ -82,8 +82,8 @@ export default {
 
       } else {
         await this.authStore.login(response.token_value, response.email, response.name)
-        const { name, direction, has_breakfast, has_dinner, has_lunch, num_tables } = await API.getRestaurant()
-        this.restaurantStore.setRestaurantInfo(name, direction, has_breakfast, has_dinner, has_lunch, num_tables)
+        const { restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables } = await API.getRestaurant()
+        this.restaurantStore.setRestaurantInfo(restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables)
         this.$router.push({ name: 'personal' })
       }
     },

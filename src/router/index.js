@@ -5,13 +5,9 @@ import AuthView from '../views/AuthView.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
 import ReservationView from '../views/ReservationView.vue'
-import AcceptReservation from '../views/AcceptReservation.vue'
 import ReservationPage from '@/views/ReservationPage.vue'
 import ReservationSend from '@/views/ReservationSend.vue'
 import ReservationSearch2 from '@/views/ReservationSearch2.vue'
-import PaymentView from '@/views/PaymentView.vue'
-import PaymentPremium from '@/views/PaymentPremium.vue'
-import PaymentPremiumPlus from '@/views/PaymentPremiumPlus.vue'
 import Success from '../views/SuccessPage.vue'
 import ErrorPage from '../views/ErrorPage.vue'
 
@@ -53,11 +49,6 @@ const routes = [
     component:ReservationView
   },
   {
-    path:'/acceptreservation',
-    name:'accept',
-    component:AcceptReservation,
-  },
-  {
     path:'/reservation/search',
     name:'reservation-search',
     component:ReservationSearch2
@@ -76,21 +67,6 @@ const routes = [
     path:'/success',
     name:'Success',
     component:Success
-  },
-  {
-    path:'/payment',
-    name:'payment',
-    component:PaymentView
-  },
-  {
-    path:'/paymentpremium',
-    name:PaymentPremium,
-    component:PaymentPremium
-  },
-  {
-    path:'/paymentpremium-plus',
-    name:PaymentPremiumPlus,
-    component:PaymentPremiumPlus
   },
   {
     path:'/profile',
