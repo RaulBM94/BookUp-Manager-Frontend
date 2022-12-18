@@ -1,5 +1,9 @@
 # bookup_frontend
+Implementamos una interfaz de usuario que permite controlar las reservas de un restaurante de una forma muy intuitiva y rápida. Un instrumento eficaz contra los No Show.
+Nuestra interfaz parte desde la pantalla Home en la que a través de enlaces podemos acceder a iniciar sesión para comenzar a gestionar las reservas. En la barra de la izquierda podemos observar diferentes rutas para acceder a la aplicación y podemos salir de la misma. 
 
+Una vez logueado podemos acceder a nuestro perfil, en la que observamos nuestros datos y los del establecimiento. Además, si clicamos sobre gestionar reservas podemos crear(rellenando el formulario con fecha, el turno y datos personales con posibilidad de dejar notas al restaurante) o buscar reservas pasándole la fecha y el turno así como la posibilidad de enviar recordatorio a nuestros clientes. 
+Además, hemos implementado una rápida y cómoda pasarela de pagos con Vue Stripe para acceder a los distintos tipos de software que se desee. 
 ## Project setup
 ```
 npm install
