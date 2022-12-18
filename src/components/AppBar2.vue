@@ -67,7 +67,7 @@
       <v-layout mt-4 column align-center>
         <v-flex>
           <v-avatar>
-            <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
           </v-avatar>
         </v-flex>
         <v-flex>
@@ -86,7 +86,7 @@
               <v-list-item-title><router-link :to="{ name: 'personal' }">Área Clientes</router-link></v-list-item-title>
             </v-list-item>
             <v-list-item>
-              <v-list-item-title>Perfil</v-list-item-title>
+              <v-list-item-title><router-link :to="{ name: 'profile' }" >Perfil</router-link></v-list-item-title>
             </v-list-item>
             <v-list-item>
               <v-list-item-title><router-link :to="{ name: 'reservation-home' }">Gestionar
