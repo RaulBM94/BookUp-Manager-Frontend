@@ -48,8 +48,8 @@
           <v-card-title>Paso 2: Registra tu establecimiento</v-card-title>
           <v-card-text>
             <v-row align="center" class="colour mx-0 mb-3">
-              <v-text-field label="Nombre del establecimiento" hide-details="auto" filled v-model="restaurant.restaurant_name"
-                :rules="[rules.required]"></v-text-field>
+              <v-text-field label="Nombre del establecimiento" hide-details="auto" filled
+                v-model="restaurant.restaurant_name" :rules="[rules.required]"></v-text-field>
             </v-row>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
@@ -130,9 +130,9 @@ export default {
       restaurant: {
         restaurant_name: "",
         direction: "",
-        has_breakfast: "",
-        has_dinner: "",
-        has_lunch: "",
+        has_breakfast: false,
+        has_dinner: false,
+        has_lunch: false,
         num_tables: 1
       },
       newUser: {
@@ -148,7 +148,7 @@ export default {
       authStore: useAuthStore(),
       restStore: useRestaurantStore(),
       valid: false,
-      unchecked:false
+      unchecked: false
     }
   },
   methods: {
@@ -164,15 +164,18 @@ export default {
             this.step++;
           }
         }
-      }
-      if (this.step === 2) {
-        if (this.$refs.form.validate() && this.unchecked === false) {
-          if (this.restaurant.has_breakfast !== "" || this.restaurant.has_lunch !== "" || this.restaurant.has_dinner !== "") {
-            this.valid = true
-            if (this.valid === true && Object.values(this.restaurant).length !== 0) {
-              this.$refs.form.resetValidation()
-              this.step++;
+      } else {
+        if (this.step === 2) {
+          if (this.$refs.form.validate() && this.unchecked === false) {
+            if (this.restaurant.has_breakfast || this.restaurant.has_lunch || this.restaurant.has_dinner) {
+              this.valid = true
+              if (this.valid === true && Object.values(this.restaurant).length !== 0) {
+                this.done()
+                this.$refs.form.resetValidation()
+                this.step++;
+              }
             }
+
           }
         }
       }
@@ -201,7 +204,6 @@ export default {
         } else {
           const { restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables } = this.restaurant
           this.restStore.setRestaurantInfo(restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables)
-          this.$router.push({ name: 'personal' })
         }
       } else {
         console.log("error")
@@ -212,4 +214,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

@@ -17,22 +17,28 @@
       <div class="title-1 font-weight-medium">
         <v-row>
           <v-col cols="6-sm-12">
-            <v-img src="@/assets/images/Control-de-gastos-en-restaurantes.jpg" class="pt-0 imagen"></v-img>
+            <v-img src="@/assets/images/Control-de-gastos-en-restaurantes.jpg" class="pt-0 imagen ml-12"></v-img>
           </v-col>
           <v-col cols="6-sm-12">
             <div>
-              <div class="mt-3 text-center mx-auto text-sm-h6 text-md-h5 title1" align="center" display="column">
-                ¿Qué te ofrecemos?
+              <div class="mb-10">
+                <v-list-title >
+                  ¿Qué te ofrecemos?
+                </v-list-title>
               </div>
-              
-              <div >
+              <div>
                 <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
+                  <v-icon width="80" height="80" color="rgb(103, 80, 164)">mdi-calendar-plus</v-icon>
                   Crear reservas fácilmente
                 </div>
-                <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
+                <br>
+                <div class="mt-3 mx-auto text-sm-h4 text-md-h5 subtitle1">
+                  <v-icon width="80" height="80" color="rgb(103, 80, 164)">mdi-calendar-search</v-icon>
                   Buscar reservas
                 </div>
+                <br>
                 <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
+                  <v-icon width="80" height="80" color="rgb(103, 80, 164)">mdi-email-arrow-right</v-icon>
                   Enviarles recordatorios a los clientes
                 </div>
               </div>
@@ -41,10 +47,11 @@
         </v-row>
       </div>
     </v-card>
-
-
+    <PriceCarousel />
+    <br>
+    <br>
     <v-card>
-      <v-row no-gutters class="testimonial">
+      <v-row no-gutters class="testimonial mt-3">
         <div>¿Qué se dice de nuestro servicio?</div>
         <v-col>
           <v-card outlined tile color="purple" class="rounded">
@@ -76,24 +83,24 @@
         </v-col>
       </v-row>
     </v-card>
+
   </div>
-
-
 </template>
 
+
 <script>
+import PriceCarousel from '@/components/PriceCarousel.vue';
 export default {
   data: () => ({
-    name: 'home',
+    name: "home",
     data() {
-      return {
-
-      }
+      return {};
     },
-    methods: {
-
-    },
+    components: {
+      PriceCarousel
+    }
   }),
+  components: { PriceCarousel }
 }
 </script>
 
@@ -131,8 +138,9 @@ export default {
   .img {
     max-width: 400px;
   }
-  .subtitulo{
-    text-align:center;
+
+  .subtitulo {
+    text-align: center;
   }
 }
 
@@ -140,12 +148,14 @@ export default {
   border-top-left-radius: 100px;
 
 }
- .titulo1{
-font-size: 32px;
- }
- .subtitulo{
+
+.titulo1 {
+  font-size: 32px;
+}
+
+.subtitulo {
   font-size: 16px;
- }
+}
 
 .contenedor {
   width: 80%;
@@ -163,16 +173,19 @@ font-size: 32px;
   margin-top: 1rem;
   color: rgb(247, 228, 252)
 }
+
 .title1 {
   font-size: 100px;
   margin: 0 1.5rem;
   margin-top: 1rem;
 }
+
 .subtitle {
   margin: 0 1.5rem;
   margin-top: 0.5rem;
   color: rgb(247, 228, 252)
 }
+
 .subtitle1 {
   margin: 0 1.5rem;
   margin-top: 0.5rem;
@@ -205,5 +218,33 @@ font-size: 32px;
   .testimonial {
     flex-direction: row;
   }
+}
+
+.cont {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.titulo {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.divider {
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.75);
+}
+
+.format {
+  border-radius: 10px;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #756752;
 }
 </style>

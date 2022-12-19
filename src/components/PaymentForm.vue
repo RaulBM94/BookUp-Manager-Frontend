@@ -1,37 +1,32 @@
 <template>
   <div class="text-center">
-    <stripe-checkout
-      ref="basic"
-      mode="subscription"
-      :pk="packages[0].publishableKey"
-      :line-items="packages[0].lineItem"
-      :success-url="packages[0].succesURL"
-      :cancel-url="packages[0].cancelURL"
-      @loading="v => loading = v"
-    />
+    <stripe-checkout ref="basic" mode="subscription" :pk="packages[0].publishableKey" :line-items="packages[0].lineItem"
+      :success-url="packages[0].succesURL" :cancel-url="packages[0].cancelURL" @loading="v => loading = v" />
     <v-btn dark large color="purple" elevation="2" width="222.52px" class="mb-3" rounded @click="submit">
       {{ packages[0].type }}
     </v-btn>
 
-    <stripe-checkout ref="premium" mode="subscription" :pk="packages[1].publishableKey" :line-items="packages[1].lineItem"
-      :success-url="packages[1].succesURL" :cancel-url="packages[1].cancelURL" @loading="v => loading = v" />
+    <stripe-checkout ref="premium" mode="subscription" :pk="packages[1].publishableKey"
+      :line-items="packages[1].lineItem" :success-url="packages[1].succesURL" :cancel-url="packages[1].cancelURL"
+      @loading="v => loading = v" />
 
     <v-btn dark large color="purple" elevation="2" width="222.52px" class="mb-3" rounded @click="submit2">
       {{ packages[1].type }}
     </v-btn>
 
-    <stripe-checkout ref="premiumPlus" mode="subscription" :pk="packages[2].publishableKey" :line-items="packages[2].lineItem"
-      :success-url="packages[2].succesURL" :cancel-url="packages[2].cancelURL" @loading="v => loading = v" />
+    <stripe-checkout ref="premiumPlus" mode="subscription" :pk="packages[2].publishableKey"
+      :line-items="packages[2].lineItem" :success-url="packages[2].succesURL" :cancel-url="packages[2].cancelURL"
+      @loading="v => loading = v" />
 
     <v-btn dark large color="purple" elevation="2" width="222.52px" rounded @click="submit3">
       {{ packages[2].type }}
     </v-btn>
     <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
-              <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
-                ANTERIOR
-              </v-btn>
-              <v-spacer></v-spacer>
-            </v-row>
+      <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
+        ANTERIOR
+      </v-btn>
+      <v-spacer></v-spacer>
+    </v-row>
 
   </div>
 </template>
@@ -56,7 +51,7 @@ export default {
             },
           ],
           successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/login'
+          cancelURL: 'http://localhost:8080/personal'
         },
         {
           type: 'Paquete Premium',
@@ -68,7 +63,7 @@ export default {
             },
           ],
           successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/login'
+          cancelURL: 'http://localhost:8080/personal'
         },
         {
           type: 'Paquete Premium Plus',
@@ -80,7 +75,7 @@ export default {
             },
           ],
           successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/login'
+          cancelURL: 'http://localhost:8080/personal'
         }
       ]
     }
@@ -105,5 +100,6 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
 

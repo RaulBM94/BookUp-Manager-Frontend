@@ -33,7 +33,7 @@
         <template v-slot:default="{ hover }">
           <v-btn :elevation="hover ? 24 : 6" class="mx-auto pa-6 title text-center" transition-swing width="300">
             <v-icon width="25" height="25" viewBox="0 0 80 80" color="rgb(103, 80, 164)">
-              mdi-calendar
+              mdi-table-chair
             </v-icon>
             <v-col cols="6-sm-2">
               GESTIONAR MESAS

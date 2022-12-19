@@ -38,6 +38,7 @@ async function getRestaurant(){
 }  
 async function createRestaurant(restaurant) {
   try {
+    console.log(restaurant)
     const { data } = await API.post('/restaurant', restaurant, {
       headers: {
         token_value: localStorage.getItem('token_value')
