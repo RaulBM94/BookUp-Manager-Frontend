@@ -13,29 +13,36 @@
       <v-btn elevation="6" class="mx-auto">Empieza ya</v-btn>
     </div>
 
-    <v-card class="testimonial text-center mt-8" elevation="0">
-      <div class="title-1 text-sm-h5 text-md-h4 font-weight-medium">
+    <v-card class=" mt-11 mx-6" elevation="0">
+      <div class="title-1 font-weight-medium">
         <v-row>
           <v-col cols="6-sm-12">
             <v-img src="@/assets/images/Control-de-gastos-en-restaurantes.jpg" class="pt-0 imagen"></v-img>
           </v-col>
           <v-col cols="6-sm-12">
-            ¿Qué te ofrecemos?
-            <v-row>
-              <v-col cols="4">
-                Crear reservas fácilmente
-              </v-col>
-              <v-col cols="4">
-                Buscar reservas
-              </v-col>
-              <v-col cols="4">
-                Enviarles recordatorios a los clientes
-              </v-col>
-            </v-row>
+            <div>
+              <div class="mt-3 text-center mx-auto text-sm-h6 text-md-h5 title1" align="center" display="column">
+                ¿Qué te ofrecemos?
+              </div>
+              
+              <div >
+                <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
+                  Crear reservas fácilmente
+                </div>
+                <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
+                  Buscar reservas
+                </div>
+                <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
+                  Enviarles recordatorios a los clientes
+                </div>
+              </div>
+            </div>
           </v-col>
         </v-row>
-        </div>
+      </div>
     </v-card>
+
+
     <v-card>
       <v-row no-gutters class="testimonial">
         <div>¿Qué se dice de nuestro servicio?</div>
@@ -124,12 +131,21 @@ export default {
   .img {
     max-width: 400px;
   }
+  .subtitulo{
+    text-align:center;
+  }
 }
 
 .imagen {
   border-top-left-radius: 100px;
 
 }
+ .titulo1{
+font-size: 32px;
+ }
+ .subtitulo{
+  font-size: 16px;
+ }
 
 .contenedor {
   width: 80%;
@@ -147,12 +163,19 @@ export default {
   margin-top: 1rem;
   color: rgb(247, 228, 252)
 }
-
+.title1 {
+  font-size: 100px;
+  margin: 0 1.5rem;
+  margin-top: 1rem;
+}
 .subtitle {
-  color: rgb(0, 0, 0);
   margin: 0 1.5rem;
   margin-top: 0.5rem;
   color: rgb(247, 228, 252)
+}
+.subtitle1 {
+  margin: 0 1.5rem;
+  margin-top: 0.5rem;
 }
 
 .testimonial {

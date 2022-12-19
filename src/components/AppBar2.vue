@@ -3,7 +3,6 @@
     <v-app-bar app color="deep-purple accent-4">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title class="white--text">BookUp Manager</v-app-bar-title>
-      <v-spacer></v-spacer>
     </v-app-bar>
     <v-navigation-drawer app v-if="!authStore.isLoggedIn" v-model="drawer" temporary light>
       <v-layout mt-4 column align-center>
