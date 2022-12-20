@@ -10,7 +10,8 @@
         <div class="subtitle text-sm-h6 text-md-h5 font-weight-medium"> ¡Controla tú mismo las reservas fácilmente y
           olvídate de los No Show!</div>
       </div>
-      <v-btn elevation="6" class="mx-auto" :to="{ name: 'login-start' }">Empieza ya</v-btn>
+      <v-btn elevation="6" class="mx-auto" :to="{ name: 'login-start' }">Registrarse</v-btn>
+      <v-btn elevation="6" class="mx-auto mt-3" :to="{ name: 'login' }">Acceder</v-btn>
     </div>
 
     <v-card class=" mt-11 mx-6" elevation="0">
