@@ -38,7 +38,7 @@ export const useAuthStore = defineStore('auth', {
 export const useRestaurantStore = defineStore('rest', {
   state: () => {
     return {
-      restaurant: useStorage('restaurant_name', null),
+      restaurant_name: useStorage('restaurant_name', null),
       direction: useStorage('direction', null),
       has_breakfast: useStorage('has_breakfast', null),
       has_lunch: useStorage('has_lunch', null),
@@ -49,7 +49,7 @@ export const useRestaurantStore = defineStore('rest', {
   getters: {
     getRestaurantInfo() {
       return {
-        restaurant: this.restaurant,
+        restaurant_name: this.restaurant_name,
         direction: this.direction,
         has_breakfast: this.has_breakfast,
         has_lunch: this.has_lunch,
@@ -59,12 +59,12 @@ export const useRestaurantStore = defineStore('rest', {
     }
   },
   actions: {
-    setRestaurantInfo(restaurant, direction, has_breakfast, has_dinner, has_lunch, num_tables) {
-      this.restaurant = restaurant
-      this.direction = direction
-      this.has_breakfast = has_breakfast
-      this.has_lunch = has_lunch
-      this.has_dinner = has_dinner
+    setRestaurantInfo(restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables) {
+      this.restaurant_name = restaurant_name,
+      this.direction = direction,
+      this.has_breakfast = has_breakfast,
+      this.has_lunch = has_lunch,
+      this.has_dinner = has_dinner,
       this.num_tables = num_tables
     }
   }
@@ -73,7 +73,7 @@ export const useRestaurantStore = defineStore('rest', {
 export const useReminderStore = defineStore('reminder', {
   state: () => {
     return {
-      name: useStorage('customer_name', null),
+      customer_name: useStorage('customer_name', null),
       email: useStorage('customer_email', null),
       date: useStorage('date', null),
       hour:useStorage('hour', null),
@@ -88,7 +88,7 @@ export const useReminderStore = defineStore('reminder', {
     },
     getName() {
       return {
-        name: this.name,
+        customer_name: this.customer_name,
       }
     },
     getDate() {
@@ -108,9 +108,9 @@ export const useReminderStore = defineStore('reminder', {
     },
   },
   actions: {
-    setCustomerInfo(email, name, date, hour, people) {
+    setCustomerInfo(email, customer_name, date, hour, people) {
       this.email = email,
-      this.name = name,
+      this.customer_name = customer_name,
       this.date = date,
       this.hour = hour,
       this.people = people

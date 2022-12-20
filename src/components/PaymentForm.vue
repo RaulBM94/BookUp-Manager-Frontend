@@ -49,8 +49,8 @@ export default {
               quantity: 1
             },
           ],
-          successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/personal'
+          successURL: 'https://bookupmanagerapi.onrender.com/api/success',
+          cancelURL: 'https://bookupmanagerapi.onrender.com/api/personal'
         },
         {
           type: 'Paquete Premium',
@@ -61,8 +61,8 @@ export default {
               quantity: 1
             },
           ],
-          successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/personal'
+          successURL: 'https://bookupmanagerapi.onrender.com/api/success',
+          cancelURL: 'https://bookupmanagerapi.onrender.com/api/personal'
         },
         {
           type: 'Paquete Premium Plus',
@@ -73,8 +73,8 @@ export default {
               quantity: 1
             },
           ],
-          successURL: 'http://localhost:8080/success',
-          cancelURL: 'http://localhost:8080/personal'
+          successURL: 'https://bookupmanagerapi.onrender.com/api/success',
+          cancelURL: 'https://bookupmanagerapi.onrender.com/api/personal'
         }
       ]
     }

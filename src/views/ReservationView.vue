@@ -6,16 +6,15 @@
         </v-alert>
         <v-alert type="error" width="40vw" :value="alert2" transition="slide-x-transition" class="alert" border="top"
             colored-border color="red)">
-            Se ha producido un error al creal la reserva
+            Se ha producido un error al crear la reserva
         </v-alert>
         <v-form v-model="valid" ref="form" lazy-validation>
             <v-card class="mx-auto my-12 carta" max-width="300" color="rgb(227, 212, 253)">
                 <v-card-title>Crear Reserva</v-card-title>
                 <v-card-text>
                     <v-row class="mx-0 mb-3 rounded colour">
-                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false"
-                            :return-value.sync="date" transition="scale-transition" offset-y
-                            min-width="auto">
+                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date"
+                            transition="scale-transition" offset-y min-width="auto">
                             <template v-slot:activator="{ on, attrs }">
                                 <v-text-field label="Seleccionar fecha" readonly v-bind="attrs" v-on="on" v-model="date"
                                     hide-details="auto" filled></v-text-field>
@@ -75,6 +74,15 @@
                 </v-card-actions>
             </v-card>
         </v-form>
+        <div class="boton mt-3">
+            <v-hover>
+                <v-btn class="small title" color="black" fab small @click="back">
+                    <v-icon color="rgb(103, 80, 164)">
+                        mdi-arrow-left
+                    </v-icon>
+                </v-btn>
+            </v-hover>
+        </div>
         <svg class="vector2" width="100vw" height="385" viewBox="0 0 100vw 385" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -135,9 +143,8 @@ export default {
                         window.setInterval(() => {
                             this.alert1 = false;
                         }, 2000)
-                        this.$refs.form.resetValidation()
                         this.date = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
-                        
+                        this.$refs.form.reset()
                     }
                 }
             }
@@ -166,6 +173,10 @@ export default {
 </script>
 
 <style scoped>
+.boton{
+  top:10px;
+  margin-left:20px;
+}
 .colour {
     background-color: rgb(255, 255, 255)
 }
@@ -176,14 +187,15 @@ export default {
     left: 0;
     z-index: 2;
 }
-.carta{
-    z-index:1
+
+.carta {
+    z-index: 1
 }
 
 .vector2 {
     position: absolute;
     left: 0;
-    bottom:100px;
+    bottom: 100px;
     overflow: visible;
 }
 </style>

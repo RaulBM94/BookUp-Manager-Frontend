@@ -62,17 +62,8 @@
     </v-navigation-drawer>
     <v-navigation-drawer app v-else v-model="drawer" temporary light>
       <v-layout mt-4 column align-center>
-        <v-flex>
-          <v-avatar>
-            <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="">
-          </v-avatar>
-        </v-flex>
-        <v-flex>
-
           <p class="white--text mt-3 headline">{{authStore.userName}}</p>
-          <!-- <p class="white--text mt-3 headline">{{name}}</p> -->
-
-        </v-flex>
+          <p class="white--text mt-3 headline">{{name}}</p>
         <v-flex>
           <v-list>
             <v-list-item-group active-class="deep-purple--text text--accent-4"></v-list-item-group>

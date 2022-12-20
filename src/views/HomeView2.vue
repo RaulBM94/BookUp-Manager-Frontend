@@ -22,9 +22,7 @@
           <v-col cols="6-sm-12">
             <div>
               <div class="mb-10">
-                <v-list-title >
                   ¿Qué te ofrecemos?
-                </v-list-title>
               </div>
               <div>
                 <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
@@ -32,7 +30,7 @@
                   Crear reservas fácilmente
                 </div>
                 <br>
-                <div class="mt-3 mx-auto text-sm-h4 text-md-h5 subtitle1">
+                <div class="mt-3 mx-auto text-sm-h6 text-md-h5 subtitle1">
                   <v-icon width="80" height="80" color="rgb(103, 80, 164)">mdi-calendar-search</v-icon>
                   Buscar reservas
                 </div>
@@ -50,12 +48,12 @@
     <PriceCarousel />
     <br>
     <br>
-    <v-card>
+    <v-card elevation="0">
       <v-row no-gutters class="testimonial mt-3">
-        <div>¿Qué se dice de nuestro servicio?</div>
-        <v-col>
-          <v-card outlined tile color="purple" class="rounded">
-            <v-card-title>
+        <div class="titulo0" font-weight="regular">¿Qué se dice de nuestro servicio?</div>
+        <v-col class="carta1">
+          <v-card outlined tile color="purple" class="rounded mr-3 mb-3">
+            <v-card-title class="cubo1">
               <div text-center>
                 “Nos hemos encontrado con un producto muy competitivo y fácil de usar. Su servicio al cliente es lo
                 mejor que he visto en mucho tiempo.”
@@ -66,9 +64,9 @@
             </v-card-title>
           </v-card>
         </v-col>
-        <v-col>
+        <v-col class="carta2">
           <v-card outlined tile color="purple" class="rounded">
-            <v-card-title>
+            <v-card-title class="cubo2">
               <div>
                 "Este software ha llegado para revolucionar mi restaurante."
               </div>
@@ -77,6 +75,7 @@
                 <div>
                   CEO de Mi bahía Restaurant&Spa
                 </div>
+
               </div>
             </v-card-title>
           </v-card>
@@ -244,5 +243,37 @@ export default {
 .card-title {
   font-weight: bold;
   color: #756752;
+}
+
+.question {
+  padding-right: 5rem;
+  font-weight: bold;
+  font-size: 30px;
+  color: blueviolet;
+}
+
+.cubo1 {
+  color: white;
+  margin: auto;
+}
+
+.cubo2 {
+  color: white;
+  margin: auto;
+}
+
+.rounded {
+  padding: 1rem;
+}
+
+.carta1 {
+  column-gap: 2rem;
+}
+
+.titulo0 {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 </style>
