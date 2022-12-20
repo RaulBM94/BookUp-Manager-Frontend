@@ -79,7 +79,7 @@ export default {
         },
         setMessage() {
             return `Hola ${this.reminderStore.getName.customer_name},
-            Te recordamos que tienes una reserva para ${this.reminderStore.getPeople.people} personas en nuestro restaurante ${this.restaurantStore.getRestaurantInfo.restaurant_name} a las  ${this.reminderStore.getHour.hour} para la fecha ${this.reminderStore.getDate.date}.
+            Te recordamos que tienes una reserva para ${this.reminderStore.getPeople.people} personas en nuestro restaurante a las  ${this.reminderStore.getHour.hour} para la fecha ${this.reminderStore.getDate.date}.
             
             Por favor, necesitamos que confirmes tu reserva, accediendo al siguiente enlace:
             https://www.bookupmanager.app/?utm_source=GoogleAds&utm_campaign=12202508584&adgroupid=118796968724&utm_term=bookup%20manager&asset=GA-Last-General-Ad2&gclid=EAIaIQobChMInLbq78qF_AIVxuFRCh1sBQp_EAAYASAAEgITOPD_BwE
