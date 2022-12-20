@@ -14,7 +14,7 @@
       <v-btn elevation="6" class="mx-auto mt-3" :to="{ name: 'login' }">Acceder</v-btn>
     </div>
 
-    <v-card class=" mt-11 mx-6" elevation="0">
+    <v-card class=" mt-11 mx-6" elevation="0" >
       <div class="title-1 font-weight-medium">
         <v-row>
           <v-col cols="6-sm-12">
