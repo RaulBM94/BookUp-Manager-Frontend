@@ -88,6 +88,11 @@
         <v-card-title>Paso 3: Selecciona el paquete</v-card-title>
         <v-card-text>
           <PaymentForm />
+          <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
+              <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
+                ANTERIOR
+              </v-btn>
+            </v-row>
         </v-card-text>
       </v-card>
     </section>

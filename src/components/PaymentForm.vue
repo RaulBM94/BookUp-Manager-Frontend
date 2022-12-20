@@ -21,12 +21,6 @@
     <v-btn dark large color="purple" elevation="2" width="222.52px" rounded @click="submit3">
       {{ packages[2].type }}
     </v-btn>
-    <v-row justify="center" class="mx-0 mt-3" v-if="step !== 1">
-      <v-btn dark large color="deep-purple" @click.prevent="prevStep" elevation="2">
-        ANTERIOR
-      </v-btn>
-      <v-spacer></v-spacer>
-    </v-row>
   </div>
 </template>
 
