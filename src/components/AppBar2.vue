@@ -1,8 +1,8 @@
 <template>
   <header>
     <v-app-bar app color="deep-purple accent-4">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-app-bar-title class="white--text">BookUp Manager</v-app-bar-title>
+      <v-app-bar-nav-icon @click="drawer = !drawer" color="white"></v-app-bar-nav-icon>
+      <div class="white--text">BookUpManager</div>
     </v-app-bar>
     <v-navigation-drawer app v-if="!authStore.isLoggedIn" v-model="drawer" temporary light>
       <v-layout mt-4 column align-center>
@@ -15,7 +15,6 @@
                 </v-list-item-icon>
                 Home
               </v-list-item>
-
               <v-list-item>
                 <v-list-item-icon>
                   <v-icon>mdi-room-service</v-icon>
@@ -29,7 +28,6 @@
                 </v-list-item-icon>
                 <v-list-item-title>Precios</v-list-item-title>
               </v-list-item>
-
               <v-list-item  :to="{ name: 'login' }">
                 <v-list-item-icon>
                   <v-icon>mdi-account</v-icon>
@@ -78,22 +76,17 @@
         <v-flex>
           <v-list>
             <v-list-item-group active-class="deep-purple--text text--accent-4"></v-list-item-group>
-            <v-list-item>
-              <v-list-item-title><router-link :to="{ name: 'home' }">Home</router-link></v-list-item-title>
+            <v-list-item :to="{ name: 'home' }">
+              <v-list-item-title>Home</v-list-item-title>
             </v-list-item>
-            <v-list-item>
-              <v-list-item-title><router-link :to="{ name: 'personal' }">Área Clientes</router-link></v-list-item-title>
+            <v-list-item :to="{ name: 'personal' }">
+              <v-list-item-title>Área Clientes</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item :to="{name: 'profile'}">
               <v-list-item-title>Perfil</v-list-item-title>
             </v-list-item>
-            <v-list-item>
-              <v-list-item-title><router-link :to="{ name: 'reservation-home' }">Gestionar
-                  Reservas</router-link></v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <v-list-item-title>Gestionar Mesas</v-list-item-title>
+            <v-list-item :to="{ name: 'reservation-home' }">
+              <v-list-item-title>Gestionar Reservas</v-list-item-title>
             </v-list-item>
             <v-divider></v-divider>
             <v-list-item @click.prevent="logout">

@@ -35,10 +35,10 @@ export const useAuthStore = defineStore('auth', {
   },
 })
 //RESTAURANTE
-export const useRestaurantStore = defineStore('restaurant', {
+export const useRestaurantStore = defineStore('rest', {
   state: () => {
     return {
-      restaurant_name: useStorage('restaurant_name', null),
+      restaurant: useStorage('restaurant_name', null),
       direction: useStorage('direction', null),
       has_breakfast: useStorage('has_breakfast', null),
       has_lunch: useStorage('has_lunch', null),
@@ -49,7 +49,7 @@ export const useRestaurantStore = defineStore('restaurant', {
   getters: {
     getRestaurantInfo() {
       return {
-        restaurant_name: this.restaurant_name,
+        restaurant: this.restaurant,
         direction: this.direction,
         has_breakfast: this.has_breakfast,
         has_lunch: this.has_lunch,
@@ -59,8 +59,8 @@ export const useRestaurantStore = defineStore('restaurant', {
     }
   },
   actions: {
-    setRestaurantInfo(restaurant_name, direction, has_breakfast, has_dinner, has_lunch, num_tables) {
-      this.restaurant_name = restaurant_name
+    setRestaurantInfo(restaurant, direction, has_breakfast, has_dinner, has_lunch, num_tables) {
+      this.restaurant = restaurant
       this.direction = direction
       this.has_breakfast = has_breakfast
       this.has_lunch = has_lunch

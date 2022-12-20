@@ -82,9 +82,6 @@
           </v-card-text>
         </v-card>
       </section>
-
-
-
     </v-form>
     <section v-if="step === 3">
       <v-card class="mx-auto my-12" max-width="360" color="rgb(227, 212, 253)">
@@ -92,10 +89,7 @@
         <v-card-text>
           <PaymentForm />
         </v-card-text>
-        <v-card-actions>
-        </v-card-actions>
       </v-card>
-
     </section>
   </div>
 </template>
@@ -123,8 +117,6 @@ export default {
         pwdCheck: v => v === this.newUser.password || 'Las contraseñas han de coincidir',
         phone: v => v.length === 9 || 'Introduce un número de teléfono válido',
         pwd: v => v.length >= 5 || 'La contraseña debe tener 5 caracteres como mínimo'
-        // chooseOne: v => 
-        // this.restaurant.has_breakfast === true || this.restaurant.has_lunch === true || this.restaurant.has_dinner === true
       }
       ,
       restaurant: {
@@ -175,18 +167,9 @@ export default {
                 this.step++;
               }
             }
-
           }
         }
       }
-      // if (this.$refs.form.validate()) {
-      //   this.valid = true
-      //   if (this.valid === true && Object.values(this.newUser).length !== 0) {
-      //     this.$refs.form.resetValidation()
-      //     this.step++;
-      //     console.log("ok")
-      //   }
-      // }
     },
     toggleForm() {
       this.$emit("toggleForm")
@@ -212,7 +195,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -27,7 +27,6 @@
       </v-btn>
       <v-spacer></v-spacer>
     </v-row>
-
   </div>
 </template>
 
