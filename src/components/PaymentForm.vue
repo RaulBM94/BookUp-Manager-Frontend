@@ -50,7 +50,7 @@ export default {
             },
           ],
           successURL: 'https://bookupmanagerapi.onrender.com/api/success',
-          cancelURL: 'https://bookupmanagerapi.onrender.com/api/home'
+          cancelURL: 'https://bookup-manager.netlify.app/'
         },
         {
           type: 'Paquete Premium',
@@ -62,7 +62,7 @@ export default {
             },
           ],
           successURL: 'https://bookupmanagerapi.onrender.com/api/success',
-          cancelURL: 'https://bookupmanagerapi.onrender.com/api/home'
+          cancelURL: 'https://bookup-manager.netlify.app/'
         },
         {
           type: 'Paquete Premium Plus',
@@ -74,7 +74,7 @@ export default {
             },
           ],
           successURL: 'https://bookupmanagerapi.onrender.com/api/success',
-          cancelURL: 'https://bookupmanagerapi.onrender.com/api/home'
+          cancelURL: 'https://bookup-manager.netlify.app/'
         }
       ]
     }
